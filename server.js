@@ -16,10 +16,10 @@ app.get( "/mesh" , function (req, res){
   console.log("get tasks");
   try {
     res.set('Content-Type', 'application/json');
-    res.jsonp( { name : "on" } );
+    // res.jsonp( { name : "on" } );
     json      = { mesh : req.query.name };
     fs.writeFile( "./mesh/switch.json" , JSON.stringify(json) );
-    // console.log(req.query.name);
+    console.log(req.query.name);
     res.status(200).end();
   } catch(e) {
     res.send([]);
