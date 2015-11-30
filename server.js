@@ -20,6 +20,7 @@ app.get( "/mesh" , function (req, res){
     
     json = { mesh : req.query.mesh };
     fs.writeFile( "./mesh/switch.json" , JSON.stringify(json) );
+    console.log(json);
     console.log(req.query.mesh);
     res.jsonp( { mesh : req.query.mesh } );
     res.status(200).end();

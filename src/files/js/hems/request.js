@@ -4,14 +4,14 @@ module.exports = function request() {
   function onRequest(){
     $.ajax({
       type: "GET",
-      url: "http://the-hemshouse.herokuapp.com/mesh",
-      // url: "http://localhost:8000/mesh",
-      data: { "mesh" : "off" },//なんでもいい
+      // url: "http://the-hemshouse.herokuapp.com/mesh",
+      url: "http://localhost:8000/mesh",
+      data: { "mesh" : "on" },//なんでもいい
       dataType:"jsonp",
       jsonpCallback: 'callback',
       success: function(data){
-        console.log(data)
-        // onSucceed(data);
+        // console.log(data)
+        onSucceed(data);
       },
       error: function(a, b, c ) {
         console.log("通信エラーです");
@@ -22,29 +22,29 @@ module.exports = function request() {
     });
   }
 
-  function offRequest(){
-    $.ajax({
-      type: "GET",
-      url: "http://the-hemshouse.herokuapp.com/mesh",
-      data: { "mesh" : "off" },//なんでもいい
-      dataType:"jsonp",
-      jsonpCallback: 'callback',
-      success: function(data){
-        console.log(data)
-        // offSucceed(data);
-      },
-      error: function() {
-        console.log("通信エラーです");
-      }
-    });
-  }
-
-  // function onSucceed(data) {
-  //   var dataOn = data;
-  //   // console.log(dataOn);
-
-  //   return data;
+  // function offRequest(){
+  //   $.ajax({
+  //     type: "GET",
+  //     url: "http://the-hemshouse.herokuapp.com/mesh",
+  //     data: { "mesh" : "off" },//なんでもいい
+  //     dataType:"jsonp",
+  //     jsonpCallback: 'callback',
+  //     success: function(data){
+  //       console.log(data)
+  //       // offSucceed(data);
+  //     },
+  //     error: function() {
+  //       console.log("通信エラーです");
+  //     }
+  //   });
   // }
+
+  function onSucceed(data) {
+    var dataOn = data;
+    console.log(dataOn);
+
+    return data;
+  }
 
   // function offSucceed(data) {
   //   var dataOn = data;
@@ -53,7 +53,7 @@ module.exports = function request() {
   //   return data;
   // }
 
-  // onRequest();
+  onRequest();
   // offRequest();
 
   // function getMeshState() {
