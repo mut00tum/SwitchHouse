@@ -6,7 +6,7 @@ module.exports = function request() {
 
     $.ajax({
       type: "GET",
-      url: "http://localhost:8000/mesh",
+      url: "http://the-hemshouse.herokuapp.com/mesh",
       data: { "mesh" : "on" },
       dataType:"jsonp",
       jsonpCallback: 'callback',
