@@ -4,9 +4,9 @@ module.exports = function request() {
   function onRequest(){
     $.ajax({
       type: "GET",
-      url: "http://the-hemshouse.herokuapp.com/mesh",
-      // url: "http://localhost:8000/mesh",
-      data: { "mesh" : "on" },//なんでもいい
+      // url: "http://the-hemshouse.herokuapp.com/mesh",
+      url: "http://localhost:8000/mesh",
+      data: { "mesh" : "off" },//なんでもいい
       dataType:"jsonp",
       jsonpCallback: 'callback',
       success: function(data){

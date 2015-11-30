@@ -39,5 +39,5 @@ app.post("/mesh", function (req, res){
 
 console.log( "start listening at 8000" );
 // app.listen(8000);
-server.listen(process.env.PORT, process.env.IP);
+app.listen(process.env.PORT, process.env.IP);
 
