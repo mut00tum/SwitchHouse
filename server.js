@@ -36,6 +36,6 @@ app.post("/mesh", function (req, res){
 //clientフォルダの中の静的ファイルを配信
 
 console.log( "start listening at 8000" );
-app.listen(8000);
-// app.listen(process.env.PORT, process.env.IP);
+// app.listen(8000);
+app.listen(process.env.PORT, process.env.IP);
 
