@@ -16,10 +16,10 @@ app.get( "/mesh" , function (req, res){
   console.log("get tasks");
   try {
     res.set('Content-Type', 'application/json');
-    //ajaxレスポンス  
-    
+    //ajaxレスポンス
+
     json = { mesh : req.query.mesh };
-    fs.writeFile( "./mesh/switch.json" , JSON.stringify(json) );
+    fs.writeFile( "./build/files/json/switch.json" , JSON.stringify(json) );
     console.log(json);
     console.log(req.query.mesh);
     res.jsonp( { mesh : req.query.mesh } );
@@ -31,13 +31,13 @@ app.get( "/mesh" , function (req, res){
 
 app.post("/mesh", function (req, res){
   console.log("post tasks");
-  fs.writeFileSync("/mesh/switch.json", JSON.stringify(req.body));
+  fs.writeFileSync("./build/files/json/switch.json", JSON.stringify(req.body));
   res.status(200).end();
 });
 
 //clientフォルダの中の静的ファイルを配信
 
 console.log( "start listening at 8000" );
-// app.listen(8000);
-app.listen(process.env.PORT, process.env.IP);
+app.listen(8000);
+// app.listen(process.env.PORT, process.env.IP);
 

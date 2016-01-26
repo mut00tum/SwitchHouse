@@ -29,7 +29,7 @@ module.exports = function setHEMS() {
         + '<input name="equipment_4" value="8030B317" type="hidden" />'
         //light
         + '<input name="equipment_3" value="8031" type="hidden" />'
-        + '<input class="on" type="submit" value="あさ" />'
+        + '<input class="on" type="submit" value="" />'
         + '</form>',
       day : String()
         + '<form action="https://pre.ideagenerator.jp/api/"  target="f1" method="post">'
@@ -47,7 +47,7 @@ module.exports = function setHEMS() {
         + '<input name="equipment_4" value="8031B319" type="hidden" />'
         //light
         + '<input name="equipment_3" value="8031" type="hidden" />'
-        + '<input class="on" type="submit" value="ひる" />'
+        + '<input class="on" type="submit" value="" />'
         + '</form>',
       night : String()
         + '<form action="https://pre.ideagenerator.jp/api/"  target="f1" method="post">'
@@ -65,7 +65,7 @@ module.exports = function setHEMS() {
         + '<input name="equipment_4" value="8030B319" type="hidden" />'
         //light
         + '<input name="equipment_3" value="8030" type="hidden" />'
-        + '<input class="on" type="submit" value="よる" />'
+        + '<input class="on" type="submit" value="" />'
         + '</form>'
     };
 

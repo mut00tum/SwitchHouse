@@ -5,7 +5,7 @@ var request  = require( './hems/request' );
 
 //hems
 setHEMS();
-// request();
+request();
 
 //watch
 // observer();
