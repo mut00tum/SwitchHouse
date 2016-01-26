@@ -1,43 +1,60 @@
+var
+  fs         = require( 'fs' ),
+  express    = require( 'express' ),
+  bodyParser = require( 'body-parser' ),
+  request    = require( 'request' ),
+  app        = express(),
+  json;
 
-var fs = require("fs");
-var express = require("express");
-var bodyParser = require( "body-parser" );
+var
+  Path = {
+    json : './json/switch.json'
+  };
 
-
-var app = express();
-// body-parserミドルウェアを有効化。（送信されてくるフォーマット：JSON）
+// body-parserミドルウェアを有効化。
 app.use(bodyParser.json());
 app.use(express.static( "build" ));
 app.set("jsonp callback", true);
 
-var json , queryText;
+console.log( "start listening at 8000" );
+app.listen(8000);
 
-app.get( "/mesh" , function (req, res){
-  console.log("get tasks");
+
+app.get( "/switch" , function (req, res){
+  console.log( 'GET: /switch' );
   try {
     res.set('Content-Type', 'application/json');
-    //ajaxレスポンス
-
-    json = { mesh : req.query.mesh };
-    fs.writeFile( "./build/files/json/switch.json" , JSON.stringify(json) );
-    console.log(json);
-    console.log(req.query.mesh);
-    res.jsonp( { mesh : req.query.mesh } );
+    var data = JSON.parse( fs.readFileSync( Path.json , 'utf8' ) );
+    res.jsonp( data );
+    // fs.readFile( Path.json , JSON.stringify(json) , function( err , data ){
+    //   if (err) { return console.dir(err); }
+    //   console.log( 'GET: readFile: '+  data )
+    //   res.jsonp( data );
+    // });
     res.status(200).end();
   } catch(e) {
-    res.send([]);
+    console.log( 'GET: /switch: error!' )
   }
 });
 
-app.post("/mesh", function (req, res){
-  console.log("post tasks");
-  fs.writeFileSync("./build/files/json/switch.json", JSON.stringify(req.body));
-  res.status(200).end();
+app.post("/off", function (req, res){
+  try {
+    console.log( 'POST: /off:' + req.body );
+    fs.writeFileSync( Path.json , JSON.stringify(req.body));
+    res.status(200).end();
+  } catch(e) {
+    console.log( 'POST: /off: error!' )
+  }
 });
 
-//clientフォルダの中の静的ファイルを配信
+app.post("/on", function (req, res){
+  try {
+    console.log( 'POST: /on:' + req.body );
+    fs.writeFileSync( Path.json , JSON.stringify(req.body));
+    res.status(200).end();
+  } catch(e) {
+    console.log( 'POST: /on: error!' )
+  }
+});
 
-console.log( "start listening at 8000" );
-app.listen(8000);
-// app.listen(process.env.PORT, process.env.IP);
 

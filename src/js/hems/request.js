@@ -1,20 +1,39 @@
 module.exports = function request() {
 
+  var
+    URL = {
+      local : 'http://192.168.0.134:8000',
+      heroku : 'http://the-hemshouse.herokuapp.com'
+    },
+    OFF = {
+      prop : '/off',
+      data : { switch : 'off' }
+    },
+    ON = {
+      prop : '/on',
+      data : { switch : 'on' }
+    },
+    GET = {
+      prop : '/switch'
+    },
+    Json;
+
+
 // var MeshState = {};
-  function onRequest(){
+  function getJSONRequest(){
     $.ajax({
-      type: "GET",
-      // url: "http://the-hemshouse.herokuapp.com/mesh",
-      url: "http://localhost:8000/mesh",
-      data: { "mesh" : "on" },//なんでもいい
+      type: 'GET',
+      url: URL.local + GET.prop,
+      // data: { "mesh" : "on" },
       dataType:"jsonp",
       jsonpCallback: 'callback',
       success: function(data){
-        // console.log(data)
-        onSucceed(data);
+        Json = data;
+        console.log( 'getJSONRequest: ' + data )
+        console.log( data )
       },
       error: function(a, b, c ) {
-        console.log("通信エラーです");
+        console.log("getJSONRequest 通信エラーです");
         console.log( a.state );
         console.log( b );
         console.log( c );
@@ -22,20 +41,20 @@ module.exports = function request() {
     });
   }
 
-  function jsonRequest(){
+  function offRequest(){
+
+    var data = JSON.stringify( OFF.data );
+
     $.ajax({
-      type: "GET",
-      url: "http://the-hemshouse.herokuapp.com/mesh/localMesh/switch.json",
-      // url: "http://192.168.0.134:8888/event/IoT/app/mesh/switch.json",
-      // data: { "mesh" : "mesh"},//なんでもいい
-      dataType:"jsonp",
-      jsonpCallback: 'callback',
+      type: 'POST',
+      url: URL.local + OFF.prop,
+      data: data,
+      contentType: 'application/json',
       success: function(data){
-        console.log(data);
-        // offSucceed(data);
+        console.log( 'offRequest succeed!' );
       },
       error: function(a, b, c ) {
-        console.log("通信エラーです");
+        console.log("offRequest 通信エラーです");
         console.log( a.state );
         console.log( b );
         console.log( c );
@@ -43,25 +62,40 @@ module.exports = function request() {
     });
   }
 
-  function onSucceed(data) {
-    var dataOn = data;
-    console.log(dataOn);
+  function onRequestTest(){
 
-    return data;
+    var data = JSON.stringify( ON.data );
+
+    $.ajax({
+      type: 'POST',
+      url: URL.local + ON.prop,
+      data: data,
+      contentType: 'application/json',
+      success: function(data){
+        console.log( 'onRequestTest succeed!' );
+      },
+      error: function(a, b, c ) {
+        console.log("offRequest 通信エラーです");
+        console.log( a.state );
+        console.log( b );
+        console.log( c );
+      }
+    });
   }
 
-  // function offSucceed(data) {
-  //   var dataOn = data;
-  //   console.log(dataOn);
 
-  //   return data;
-  // }
 
-  onRequest();
-  jsonRequest();
+  return {
+    getJSONRequest : getJSONRequest,
+    onRequestTest  : onRequestTest,
+    offRequest     : offRequest,
+    Json           : Json
+  }
+  // onRequest();
+  // jsonRequest();
 
   // function getMeshState() {
-    
+
   //   // onRequest();
   //   // offRequest();
   //   // if ( state.neme == "on" ) {
@@ -73,5 +107,5 @@ module.exports = function request() {
   // setInterval( getMeshState , 1000);
 
 
-  
+
 }

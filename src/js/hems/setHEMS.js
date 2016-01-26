@@ -1,7 +1,7 @@
 module.exports = function setHEMS() {
 
   var
-    $Map = {
+    Map = {
       btn : $('#setHEMSButton')
     },
     BtnMap = {
@@ -14,7 +14,7 @@ module.exports = function setHEMS() {
     },
     HtmlMap ={
       morning : String()
-        + '<form action="https://pre.ideagenerator.jp/api/"  target="f1" method="post">'
+        + '<form action="https://pre.ideagenerator.jp/api/" target="f1" method="post">'
         + '<input name="id" value="mutoko" type="hidden" />'
         + '<input name="pw" value="b2vs8nit" type="hidden" />'
         + '<input name="mode" value="set" type="hidden" />'
@@ -32,7 +32,7 @@ module.exports = function setHEMS() {
         + '<input class="on" type="submit" value="" />'
         + '</form>',
       day : String()
-        + '<form action="https://pre.ideagenerator.jp/api/"  target="f1" method="post">'
+        + '<form action="https://pre.ideagenerator.jp/api/" target="f1" method="post">'
         + '<input name="id" value="mutoko" type="hidden" />'
         + '<input name="pw" value="b2vs8nit" type="hidden" />'
         + '<input name="mode" value="set" type="hidden" />'
@@ -50,7 +50,7 @@ module.exports = function setHEMS() {
         + '<input class="on" type="submit" value="" />'
         + '</form>',
       night : String()
-        + '<form action="https://pre.ideagenerator.jp/api/"  target="f1" method="post">'
+        + '<form action="https://pre.ideagenerator.jp/api/" target="f1" method="post">'
         + '<input name="id" value="mutoko" type="hidden" />'
         + '<input name="pw" value="b2vs8nit" type="hidden" />'
         + '<input name="mode" value="set" type="hidden" />'
@@ -70,7 +70,7 @@ module.exports = function setHEMS() {
     };
 
     //init
-    $Map.btn.html( HtmlMap.morning );
+    Map.btn.html( HtmlMap.morning );
 
     BtnMap.morningHour.on( 'click' , function() {
       setButton('morning');
@@ -81,24 +81,23 @@ module.exports = function setHEMS() {
     BtnMap.nightHour.on( 'click' , function() {
       setButton('night');
     });
-
-    $Map.btn.on( 'click' , function(){
+    Map.btn.on( 'click' , function(){
       reloadIframe();
     });
 
     function reloadIframe() {
      var src = $("#monitor").attr("src");
-     
+
       setTimeout(function(){
          $("#monitor").attr("src","");
          $("#monitor").attr("src",src);
       } , 250 );
-     
+
     }
 
     function setButton( hourString ) {
       //init
-      $Map.btn.html( '' );
+      Map.btn.html( '' );
 
       var hour;
       switch( hourString ) {
@@ -112,8 +111,8 @@ module.exports = function setHEMS() {
           hour = HtmlMap.night;
           break;
       }
-      
-      $Map.btn.html( hour );
+
+      Map.btn.html( hour );
     }
-    
+
 }

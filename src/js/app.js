@@ -5,7 +5,13 @@ var request  = require( './hems/request' );
 
 //hems
 setHEMS();
-request();
+
+request().getJSONRequest();
+// request().offRequest();
+request().onRequestTest();
+// var json = request().Json;
+
+// console.log( json )
 
 //watch
 // observer();
