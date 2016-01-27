@@ -1,40 +1,59 @@
+var
+  fs         = require( 'fs' ),
+  express    = require( 'express' ),
+  bodyParser = require( 'body-parser' ),
+  request    = require( 'request' );
 
-var fs = require("fs");
-var express = require("express");
-var bodyParser = require( "body-parser" );
+var app  = express();
 
+// var port = process.env.PORT || 8000;
 
-var app = express();
-// body-parserミドルウェアを有効化。（送信されてくるフォーマット：JSON）
+var
+  Path = {
+    json : './json/switch.json'
+  };
+
+// body-parserミドルウェアを有効化。
+// app.use(express.favicon());
 app.use(bodyParser.json());
 app.use(express.static( "build" ));
 app.set("jsonp callback", true);
 
-var json , queryText;
+console.log( "start listening at 8000" );
+app.listen(8000);
 
-app.get( "/mesh" , function (req, res){
-  console.log("get tasks");
+
+app.get( "/hems" , function (req, res){
+  // console.log( 'GET: /switch' );
   try {
     res.set('Content-Type', 'application/json');
-    // res.jsonp( { name : "on" } );
-    json      = { mesh : req.query.name };
-    fs.writeFile( "./mesh/switch.json" , JSON.stringify(json) );
-    console.log(req.query.name);
+    var data = JSON.parse( fs.readFileSync( Path.json , 'utf8' ) );
+    res.jsonp( data );
+    // console.log( data )
     res.status(200).end();
   } catch(e) {
-    res.send([]);
+    console.log( 'GET: /switch: error!' )
   }
 });
 
-app.post("/mesh", function (req, res){
-  console.log("post tasks");
-  fs.writeFileSync("/mesh/switch.json", JSON.stringify(req.body));
-  res.status(200).end();
+app.post("/off", function (req, res){
+  try {
+    // console.log( 'POST: /off:' + req.body );
+    fs.writeFileSync( Path.json , JSON.stringify(req.body));
+    res.status(200).end();
+  } catch(e) {
+    console.log( 'POST: /off: error!' )
+  }
 });
 
-//clientフォルダの中の静的ファイルを配信
+app.post("/on", function (req, res){
+  try {
+    console.log( 'POST: /on:' + req.body );
+    fs.writeFileSync( Path.json , JSON.stringify(req.body));
+    res.status(200).end();
+  } catch(e) {
+    console.log( 'POST: /on: error!' )
+  }
+});
 
-console.log( "start listening at 8000" );
-app.listen(8000);
-// app.listen(process.env.PORT, process.env.IP);
 
