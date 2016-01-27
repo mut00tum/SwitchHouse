@@ -20,51 +20,51 @@ module.exports = function request() {
     },
     RequestJson;
 
-  // function getJsonRequest(){
-  //   $.ajax({
-  //     type: 'GET',
-  //     url: URL.heroku + GET.prop,
-  //     // dataType:"jsonp",
-  //     // jsonpCallback: 'callback',
-  //     contentType: 'application/json',
-  //     success: function( data ){
-  //       action(data)
-  //     },
-  //     error: function(a, b, c ) {
-  //       console.log("getJSONRequest 通信エラーです");
-  //       console.log( a.state );
-  //       console.log( b );
-  //       console.log( c );
-  //     }
-  //   });
+  function getJsonRequest(){
+    $.ajax({
+      type: 'GET',
+      url: URL.heroku + GET.prop,
+      // dataType:"jsonp",
+      // jsonpCallback: 'callback',
+      contentType: 'application/json',
+      success: function( data ){
+        action(data)
+      },
+      error: function(a, b, c ) {
+        console.log("getJSONRequest 通信エラーです");
+        console.log( a.state );
+        console.log( b );
+        console.log( c );
+      }
+    });
 
-  //   function action( data ) {
-  //     RequestJson = data;
-  //     console.log( RequestJson )
-  //     houseState().set( data );
-  //     offRequest();
-  //   }
-  // }
+    function action( data ) {
+      RequestJson = data;
+      console.log( RequestJson )
+      houseState().set( data );
+      offRequest();
+    }
+  }
 
-  // function offRequest(){
-  //   var data = JSON.stringify( OFF.data );
+  function offRequest(){
+    var data = JSON.stringify( OFF.data );
 
-  //   $.ajax({
-  //     type: 'POST',
-  //     url: URL.heroku + OFF.prop,
-  //     data: data,
-  //     contentType: 'application/json',
-  //     success: function(data){
-  //       console.log( 'offRequest succeed!' );
-  //     },
-  //     error: function(a, b, c ) {
-  //       console.log("offRequest 通信エラーです");
-  //       console.log( a.state );
-  //       console.log( b );
-  //       console.log( c );
-  //     }
-  //   });
-  // }
+    $.ajax({
+      type: 'POST',
+      url: URL.heroku + OFF.prop,
+      data: data,
+      contentType: 'application/json',
+      success: function(data){
+        console.log( 'offRequest succeed!' );
+      },
+      error: function(a, b, c ) {
+        console.log("offRequest 通信エラーです");
+        console.log( a.state );
+        console.log( b );
+        console.log( c );
+      }
+    });
+  }
 
   // function onRequestTest(){
   //   var data = JSON.stringify( ON.data );
@@ -89,9 +89,9 @@ module.exports = function request() {
   // console.log( getJsonData() )
 
   return {
-    // getJsonRequest : getJsonRequest,
+    getJsonRequest : getJsonRequest,
     // onRequestTest  : onRequestTest,
-    // offRequest     : offRequest
+    offRequest     : offRequest
   }
 
 
