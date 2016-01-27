@@ -15,6 +15,7 @@ var
 
 // body-parserミドルウェアを有効化。
 // app.use(express.favicon());
+app.use(express.favicon('./favicon.ico'));
 app.use(bodyParser.json());
 app.use(express.static( "build" ));
 app.set("jsonp callback", true);
