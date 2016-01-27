@@ -6,7 +6,7 @@ var
   app        = express(),
   json;
 
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || 3000;
 
 var
   Path = {
@@ -18,41 +18,41 @@ app.use(bodyParser.json());
 app.use(express.static( "build" ));
 app.set("jsonp callback", true);
 
-console.log( "start listening at 8000" );
-app.listen(port);
+console.log( "start listening at 3000" );
+app.listen(3000);
 
 
-// app.get( "/hems" , function (req, res){
-//   // console.log( 'GET: /switch' );
-//   try {
-//     res.set('Content-Type', 'application/json');
-//     var data = JSON.parse( fs.readFileSync( Path.json , 'utf8' ) );
-//     res.jsonp( data );
-//     // console.log( data )
-//     res.status(200).end();
-//   } catch(e) {
-//     console.log( 'GET: /switch: error!' )
-//   }
-// });
+app.get( "/hems" , function (req, res){
+  // console.log( 'GET: /switch' );
+  try {
+    res.set('Content-Type', 'application/json');
+    var data = JSON.parse( fs.readFileSync( Path.json , 'utf8' ) );
+    res.jsonp( data );
+    // console.log( data )
+    res.status(200).end();
+  } catch(e) {
+    console.log( 'GET: /switch: error!' )
+  }
+});
 
-// app.post("/off", function (req, res){
-//   try {
-//     // console.log( 'POST: /off:' + req.body );
-//     fs.writeFileSync( Path.json , JSON.stringify(req.body));
-//     res.status(200).end();
-//   } catch(e) {
-//     console.log( 'POST: /off: error!' )
-//   }
-// });
+app.post("/off", function (req, res){
+  try {
+    // console.log( 'POST: /off:' + req.body );
+    fs.writeFileSync( Path.json , JSON.stringify(req.body));
+    res.status(200).end();
+  } catch(e) {
+    console.log( 'POST: /off: error!' )
+  }
+});
 
-// app.post("/on", function (req, res){
-//   try {
-//     console.log( 'POST: /on:' + req.body );
-//     fs.writeFileSync( Path.json , JSON.stringify(req.body));
-//     res.status(200).end();
-//   } catch(e) {
-//     console.log( 'POST: /on: error!' )
-//   }
-// });
+app.post("/on", function (req, res){
+  try {
+    console.log( 'POST: /on:' + req.body );
+    fs.writeFileSync( Path.json , JSON.stringify(req.body));
+    res.status(200).end();
+  } catch(e) {
+    console.log( 'POST: /on: error!' )
+  }
+});
 
 
