@@ -24,18 +24,18 @@ console.log( "start listening at 8000" );
 // app.listen(8000);
 app.listen(process.env.PORT || 8000);
 
-app.get( "/hems" , function (req, res){
-  // console.log( 'GET: /switch' );
-  try {
-    res.set('Content-Type', 'application/json');
-    var data = JSON.parse( fs.readFileSync( Path.json , 'utf8' ) );
-    res.json( data );
-    // console.log( data )
-    res.status(200).end();
-  } catch(e) {
-    console.log( 'GET: /switch: error!' )
-  }
-});
+// app.get( "/hems" , function (req, res){
+//   // console.log( 'GET: /switch' );
+//   try {
+//     res.set('Content-Type', 'application/json');
+//     var data = JSON.parse( fs.readFileSync( Path.json , 'utf8' ) );
+//     res.json( data );
+//     // console.log( data )
+//     res.status(200).end();
+//   } catch(e) {
+//     console.log( 'GET: /switch: error!' )
+//   }
+// });
 
 app.post("/off", function (req, res){
   try {
