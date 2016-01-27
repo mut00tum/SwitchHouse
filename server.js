@@ -20,8 +20,8 @@ app.use(express.static( "build" ));
 app.set("jsonp callback", true);
 
 console.log( "start listening at 8000" );
-app.listen(8000);
-
+// app.listen(8000);
+app.listen(process.env.PORT || 8000);
 
 app.get( "/hems" , function (req, res){
   // console.log( 'GET: /switch' );
