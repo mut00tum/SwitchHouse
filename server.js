@@ -6,6 +6,8 @@ var
   app        = express(),
   json;
 
+var port = process.env.PORT || 8000;
+
 var
   Path = {
     json : './json/switch.json'
@@ -17,7 +19,7 @@ app.use(express.static( "build" ));
 app.set("jsonp callback", true);
 
 console.log( "start listening at 8000" );
-app.listen(8000);
+app.listen(port);
 
 
 app.get( "/hems" , function (req, res){
