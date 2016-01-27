@@ -23,7 +23,7 @@ module.exports = function request() {
   function getJsonRequest(){
     $.ajax({
       type: 'GET',
-      url: URL.local + GET.prop,
+      url: URL.heroku + GET.prop,
       dataType:"jsonp",
       jsonpCallback: 'callback',
       success: function( data ){
@@ -50,7 +50,7 @@ module.exports = function request() {
 
     $.ajax({
       type: 'POST',
-      url: URL.local + OFF.prop,
+      url: URL.heroku + OFF.prop,
       data: data,
       contentType: 'application/json',
       success: function(data){
