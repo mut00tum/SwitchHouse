@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     // "postinstall": "gulp webpack",
-    "start": "node server/server.js",
+    // "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
