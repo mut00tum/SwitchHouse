@@ -28,7 +28,7 @@ app.get( "/hems" , function (req, res){
   try {
     res.set('Content-Type', 'application/json');
     var data = JSON.parse( fs.readFileSync( Path.json , 'utf8' ) );
-    res.jsonp( data );
+    res.json( data );
     // console.log( data )
     res.status(200).end();
   } catch(e) {

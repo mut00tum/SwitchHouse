@@ -24,8 +24,9 @@ module.exports = function request() {
     $.ajax({
       type: 'GET',
       url: URL.heroku + GET.prop,
-      dataType:"jsonp",
-      jsonpCallback: 'callback',
+      // dataType:"jsonp",
+      // jsonpCallback: 'callback',
+      contentType: 'application/json',
       success: function( data ){
         action(data)
       },
