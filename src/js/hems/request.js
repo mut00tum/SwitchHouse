@@ -5,7 +5,7 @@ module.exports = function request() {
   var
     URL = {
       local : 'http://192.168.0.134:8000',
-      heroku : 'https://the-hemshouse.herokuapp.com/'
+      heroku : 'http://the-hemshouse.herokuapp.com'
     },
     OFF = {
       prop : '/off',
