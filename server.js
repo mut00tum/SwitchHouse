@@ -19,7 +19,7 @@ app.use(express.static( "build" ));
 app.set("jsonp callback", true);
 
 console.log( "start listening at 3000" );
-app.listen(3000);
+app.listen(port);
 
 
 app.get( "/hems" , function (req, res){
