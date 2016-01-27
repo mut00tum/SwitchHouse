@@ -16,7 +16,7 @@ module.exports = function request() {
       data : { switch : 'on' }
     },
     GET = {
-      prop : '/switch'
+      prop : '/hems'
     },
     RequestJson;
 
