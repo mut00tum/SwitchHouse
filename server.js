@@ -1,8 +1,7 @@
-var
-  fs         = require( 'fs' ),
-  express    = require( 'express' ),
-  bodyParser = require( 'body-parser' ),
-  request    = require( 'request' );
+var  fs         = require( 'fs' );
+var  express    = require( 'express' );
+var  bodyParser = require( 'body-parser' );
+var  request    = require( 'request' );
 
 var app  = express();
 
