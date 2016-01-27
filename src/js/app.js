@@ -7,10 +7,9 @@ var houseState = require( './hems/houseState' );
 
 setHEMS();
 
-// setInterval( function(){
-//   request().getJsonRequest();
-// } , 2000 );
-
+setInterval( function(){
+  request().getJsonRequest();
+} , 2000 );
 // request().getJsonRequest();
 // request().offRequest();
 // request().onRequestTest();
