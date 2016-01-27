@@ -1,3 +1,5 @@
+var houseState = require( './houseState' );
+
 module.exports = function request() {
 
   var
@@ -16,21 +18,16 @@ module.exports = function request() {
     GET = {
       prop : '/switch'
     },
-    Json;
+    RequestJson;
 
-
-// var MeshState = {};
-  function getJSONRequest(){
+  function getJsonRequest(){
     $.ajax({
       type: 'GET',
       url: URL.local + GET.prop,
-      // data: { "mesh" : "on" },
       dataType:"jsonp",
       jsonpCallback: 'callback',
-      success: function(data){
-        Json = data;
-        console.log( 'getJSONRequest: ' + data )
-        console.log( data )
+      success: function( data ){
+        action(data)
       },
       error: function(a, b, c ) {
         console.log("getJSONRequest 通信エラーです");
@@ -39,10 +36,16 @@ module.exports = function request() {
         console.log( c );
       }
     });
+
+    function action( data ) {
+      RequestJson = data;
+      console.log( RequestJson )
+      houseState().set( data );
+      offRequest();
+    }
   }
 
   function offRequest(){
-
     var data = JSON.stringify( OFF.data );
 
     $.ajax({
@@ -62,49 +65,33 @@ module.exports = function request() {
     });
   }
 
-  function onRequestTest(){
+  // function onRequestTest(){
+  //   var data = JSON.stringify( ON.data );
 
-    var data = JSON.stringify( ON.data );
-
-    $.ajax({
-      type: 'POST',
-      url: URL.local + ON.prop,
-      data: data,
-      contentType: 'application/json',
-      success: function(data){
-        console.log( 'onRequestTest succeed!' );
-      },
-      error: function(a, b, c ) {
-        console.log("offRequest 通信エラーです");
-        console.log( a.state );
-        console.log( b );
-        console.log( c );
-      }
-    });
-  }
-
-
-
-  return {
-    getJSONRequest : getJSONRequest,
-    onRequestTest  : onRequestTest,
-    offRequest     : offRequest,
-    Json           : Json
-  }
-  // onRequest();
-  // jsonRequest();
-
-  // function getMeshState() {
-
-  //   // onRequest();
-  //   // offRequest();
-  //   // if ( state.neme == "on" ) {
-  //   //   console.log("ONNNN!!");
-  //   // }
-  //   console.log(  );
+  //   $.ajax({
+  //     type: 'POST',
+  //     url: URL.local + ON.prop,
+  //     data: data,
+  //     contentType: 'application/json',
+  //     success: function(data){
+  //       console.log( 'onRequestTest succeed!' );
+  //     },
+  //     error: function(a, b, c ) {
+  //       console.log("offRequest 通信エラーです");
+  //       console.log( a.state );
+  //       console.log( b );
+  //       console.log( c );
+  //     }
+  //   });
   // }
 
-  // setInterval( getMeshState , 1000);
+  // console.log( getJsonData() )
+
+  return {
+    getJsonRequest : getJsonRequest,
+    // onRequestTest  : onRequestTest,
+    offRequest     : offRequest
+  }
 
 
 

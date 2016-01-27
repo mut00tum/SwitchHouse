@@ -49,7 +49,7 @@
     padding-top: 23px;
     background: url(../img/mesh/body.png) no-repeat; }
 
-#setHEMSButton .on {
+#HEMSButton .on {
   position: relative;
   left: -5px;
   width: 86px;
@@ -58,7 +58,7 @@
   background-color: none;
   background: url(../img/mesh/btn_off.png) no-repeat;
   cursor: pointer; }
-  #setHEMSButton .on:hover {
+  #HEMSButton .on:hover {
     background: url(../img/mesh/btn_on.png) no-repeat; }
 
 #house {

@@ -26,11 +26,7 @@ app.get( "/switch" , function (req, res){
     res.set('Content-Type', 'application/json');
     var data = JSON.parse( fs.readFileSync( Path.json , 'utf8' ) );
     res.jsonp( data );
-    // fs.readFile( Path.json , JSON.stringify(json) , function( err , data ){
-    //   if (err) { return console.dir(err); }
-    //   console.log( 'GET: readFile: '+  data )
-    //   res.jsonp( data );
-    // });
+    // console.log( data )
     res.status(200).end();
   } catch(e) {
     console.log( 'GET: /switch: error!' )

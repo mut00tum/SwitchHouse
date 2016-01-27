@@ -1,20 +1,23 @@
-var setHEMS  = require( './hems/setHEMS' );
-var radio    = require( './ui/radio' );
-var observer = require( './watch/observer' );
-var request  = require( './hems/request' );
+var setHEMS      = require( './hems/setHEMS' );
+var radio        = require( './ui/radio' );
+var request      = require( './hems/request' );
+var houseState = require( './hems/houseState' );
 
 //hems
+
 setHEMS();
 
-request().getJSONRequest();
+setInterval( function(){
+  request().getJsonRequest();
+} , 2000 );
+// request().getJsonRequest();
 // request().offRequest();
-request().onRequestTest();
-// var json = request().Json;
+// request().onRequestTest();
 
-// console.log( json )
+// console.log( request().getJsonData() )
 
-//watch
-// observer();
+
+// houseState();
 
 // UI
 radio();
