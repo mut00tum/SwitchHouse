@@ -36,24 +36,24 @@ app.listen(process.env.PORT || 8000);
 //   }
 // });
 
-app.post("/off", function (req, res){
-  try {
-    // console.log( 'POST: /off:' + req.body );
-    fs.writeFileSync( Path.json , JSON.stringify(req.body));
-    res.status(200).end();
-  } catch(e) {
-    console.log( 'POST: /off: error!' )
-  }
-});
+// app.post("/off", function (req, res){
+//   try {
+//     // console.log( 'POST: /off:' + req.body );
+//     fs.writeFileSync( Path.json , JSON.stringify(req.body));
+//     res.status(200).end();
+//   } catch(e) {
+//     console.log( 'POST: /off: error!' )
+//   }
+// });
 
-app.post("/on", function (req, res){
-  try {
-    console.log( 'POST: /on:' + req.body );
-    fs.writeFileSync( Path.json , JSON.stringify(req.body));
-    res.status(200).end();
-  } catch(e) {
-    console.log( 'POST: /on: error!' )
-  }
-});
+// app.post("/on", function (req, res){
+//   try {
+//     console.log( 'POST: /on:' + req.body );
+//     fs.writeFileSync( Path.json , JSON.stringify(req.body));
+//     res.status(200).end();
+//   } catch(e) {
+//     console.log( 'POST: /on: error!' )
+//   }
+// });
 
 
