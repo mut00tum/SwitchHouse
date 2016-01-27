@@ -1,59 +1,40 @@
-var
-  fs         = require( 'fs' ),
-  express    = require( 'express' ),
-  bodyParser = require( 'body-parser' ),
-  request    = require( 'request' );
 
-var app  = express();
+var fs = require("fs");
+var express = require("express");
+var bodyParser = require( "body-parser" );
 
-// var port = process.env.PORT || 8000;
 
-var
-  Path = {
-    json : './json/switch.json'
-  };
-
-// body-parserミドルウェアを有効化。
-// app.use(express.favicon());
+var app = express();
+// body-parserミドルウェアを有効化。（送信されてくるフォーマット：JSON）
 app.use(bodyParser.json());
 app.use(express.static( "build" ));
 app.set("jsonp callback", true);
 
-console.log( "start listening at 8000" );
-// app.listen(8000);
-app.listen(process.env.PORT || 8000);
+var json , queryText;
 
-app.get( "/hems" , function (req, res){
-  // console.log( 'GET: /switch' );
+app.get( "/mesh" , function (req, res){
+  console.log("get tasks");
   try {
     res.set('Content-Type', 'application/json');
-    var data = JSON.parse( fs.readFileSync( Path.json , 'utf8' ) );
-    res.json( data );
-    // console.log( data )
+    // res.jsonp( { name : "on" } );
+    json      = { mesh : req.query.name };
+    fs.writeFile( "./mesh/switch.json" , JSON.stringify(json) );
+    console.log(req.query.name);
     res.status(200).end();
   } catch(e) {
-    console.log( 'GET: /switch: error!' )
+    res.send([]);
   }
 });
 
-app.post("/off", function (req, res){
-  try {
-    // console.log( 'POST: /off:' + req.body );
-    fs.writeFileSync( Path.json , JSON.stringify(req.body));
-    res.status(200).end();
-  } catch(e) {
-    console.log( 'POST: /off: error!' )
-  }
+app.post("/mesh", function (req, res){
+  console.log("post tasks");
+  fs.writeFileSync("/mesh/switch.json", JSON.stringify(req.body));
+  res.status(200).end();
 });
 
-app.post("/on", function (req, res){
-  try {
-    console.log( 'POST: /on:' + req.body );
-    fs.writeFileSync( Path.json , JSON.stringify(req.body));
-    res.status(200).end();
-  } catch(e) {
-    console.log( 'POST: /on: error!' )
-  }
-});
+//clientフォルダの中の静的ファイルを配信
 
+console.log( "start listening at 8000" );
+app.listen(8000);
+// app.listen(process.env.PORT, process.env.IP);
 
