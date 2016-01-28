@@ -4,7 +4,7 @@ module.exports = function request() {
 
   var
     URL = {
-      local : 'http://192.168.0.134:8000',
+      local : 'http://localhost:8000',
       heroku : 'http://the-hemshouse.herokuapp.com'
     },
     OFF = {
@@ -23,7 +23,7 @@ module.exports = function request() {
   function getJsonRequest(){
     $.ajax({
       type: 'GET',
-      url: URL.local + GET.prop,
+      url: URL.heroku + GET.prop,
       // dataType:"jsonp",
       // jsonpCallback: 'callback',
       contentType: 'application/json',
@@ -51,7 +51,7 @@ module.exports = function request() {
 
     $.ajax({
       type: 'POST',
-      url: URL.local + OFF.prop,
+      url: URL.heroku + OFF.prop,
       data: data,
       contentType: 'application/json',
       success: function(data){
