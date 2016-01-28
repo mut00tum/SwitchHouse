@@ -7,9 +7,9 @@ var houseState = require( './hems/houseState' );
 
 setHEMS();
 
-setInterval( function(){
-  request().getJsonRequest();
-} , 1000 );
+// setInterval( function(){
+//   request().getJsonRequest();
+// } , 1000 );
 // request().getJsonRequest();
 // request().offRequest();
 // request().onRequestTest();
@@ -17,7 +17,7 @@ setInterval( function(){
 // console.log( request().getJsonData() )
 
 
-// houseState();
+houseState();
 
 // UI
 radio();

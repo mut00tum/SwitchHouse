@@ -3,9 +3,13 @@ var Map = require( './map' );
 module.exports = function setHEMS() {
 
   var
+    URL = {
+      pre : 'https://pre.ideagenerator.jp/api/',
+      on  : 'https://www.ideaGenerator.jp/api/'
+    }
     TextMap = {
       head :  String()
-        + '<form id="form" action="https://pre.ideagenerator.jp/api/" target="f1" method="post">'
+        + '<form id="form" action="' + URL.pre + '" target="f1" method="post">'
         + '<input name="id" value="mutoko" type="hidden" />'
         + '<input name="pw" value="b2vs8nit" type="hidden" />'
         + '<input name="mode" value="set" type="hidden" />'
@@ -22,19 +26,86 @@ module.exports = function setHEMS() {
       obj_03 : 'equipment_19',
       open  : 'E041',
       close : 'E042'
+    },
+    LightEL = {
+      obj_01 : 'equipment_3',
+      on  : '8030',
+      off : '8031',
+      modeNormal : 'B642',
+      modeColor : 'B644',
+      yellow : 'C0f9fb26',
+      pink   : 'C0ff57a2'
+    },
+    Air = {
+      obj_01 : 'equipment_20',
+      obj_02 : 'equipment_21',
+      obj_03 : 'equipment_22',
+      on  : '8030',
+      off : '8031',
+      modeHeat : 'B043',
+      temp23 : 'B317',
+      temp26 :'B31A',//26℃
+      temp30 : 'B31E'
+    },
+    Window = {
+      obj_01 : 'equipment_23',
+      obj_02 : 'equipment_24',
+      open   : 'E041',
+      close  : 'E042'
+    },
+    Light = {
+      obj_01 : 'equipment_15',
+      obj_02 : 'equipment_16',
+      on     : '8030',
+      off    : '8031',
+      modeNormal : 'B642',
+      modeColor : 'B644',
+      orange : 'C0ff9f08',
+      yellow : 'C0f9fb26',
+      pink   : 'C0ff57a2',
+      blue   : 'C03543ff'
+    },
+    SwitchHA = {
+      obj_01 : 'equipment_25',
+      on     : '8030',
+      off    : '8031'
+    },
+    Speaker = {
+      obj_01 : 'equipment_12',
+      on     : '8030',
+      off    : '8031'
+    },
+    Btn = {
+      obj_01 : 'equipment_26',
+      on     : '8030',
+      off    : '8031'
+    },
+    TimeState = {
+      morning : 'あさ',
+      day     : 'ひる',
+      night   : 'よる'
     }
-
-
 
   var
     HtmlMap ={
       morning : String()
         + TextMap.head
         + HouseNo.switchHouse
-        + '<input name="' + Blind.obj_01 + '" value="' + Blind.close + '" type="hidden" />'
-        + '<input name="equipment_18" value="E042" type="hidden" />'
-        + '<input name="equipment_19" value="E042" type="hidden" />'
-        + '<input class="on" type="submit" value="あさ" />'
+        + '<input name="' + Blind.obj_01 + '" value="' + Blind.open + '" type="hidden" />'
+        + '<input name="' + Blind.obj_02 + '" value="' + Blind.open + '" type="hidden" />'
+        + '<input name="' + Blind.obj_03 + '" value="' + Blind.open + '" type="hidden" />'
+        + '<input name="' + LightEL.obj_01 + '" value="' + LightEL.off + '" type="hidden" />'
+        + '<input name="' + Air.obj_01 + '" value="' + Air.off + '" type="hidden" />'
+        + '<input name="' + Air.obj_02 + '" value="' + Air.on + Air.modeHeat + Air.temp26 + '" type="hidden" />'
+        + '<input name="' + Air.obj_03 + '" value="' + Air.off + '" type="hidden" />'
+        + '<input name="' + Window.obj_01 + '" value="' + Window.open + '" type="hidden" />'
+        + '<input name="' + Window.obj_02 + '" value="' + Window.open + '" type="hidden" />'
+        + '<input name="' + Light.obj_01 + '" value="' + Light.off + '" type="hidden" />'
+        // + '<input name="' + Light.obj_01 + '" value="' + Light.on + Light.modeColor + Light.orange + '" type="hidden" />'
+        + '<input name="' + Light.obj_02 + '" value="' + Light.off + '" type="hidden" />'
+        + '<input name="' + SwitchHA.obj_01 + '" value="' + SwitchHA.off + '" type="hidden" />'
+        + '<input name="' + Btn.obj_01 + '" value="' + Btn.off + '" type="hidden" />'
+        + '<input class="on" type="submit" value="' + TimeState.morning + '" />'
         + '</form>',
       day : String()
         + '<form id="form" action="https://pre.ideagenerator.jp/api/" target="f1" method="post">'
