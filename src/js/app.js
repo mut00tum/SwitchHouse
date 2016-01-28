@@ -9,7 +9,7 @@ setHEMS();
 
 setInterval( function(){
   request().getJsonRequest();
-} , 2000 );
+} , 1000 );
 // request().getJsonRequest();
 // request().offRequest();
 // request().onRequestTest();

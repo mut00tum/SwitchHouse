@@ -1,24 +1,39 @@
 var Map = require( './map' );
 
 module.exports = function setHEMS() {
+
   var
-    HtmlMap ={
-      morning : String()
+    TextMap = {
+      head :  String()
         + '<form id="form" action="https://pre.ideagenerator.jp/api/" target="f1" method="post">'
         + '<input name="id" value="mutoko" type="hidden" />'
         + '<input name="pw" value="b2vs8nit" type="hidden" />'
         + '<input name="mode" value="set" type="hidden" />'
-        + '<input name="house_no" value="160" type="hidden" />'
-        //電動ブラインド
-        + '<input name="equipment_2" value="EA41" type="hidden" />'
-        //エアコン bedroom
-        + '<input name="equipment_1" value="8030B317" type="hidden" />'
-        //浴室暖房乾燥機
-        + '<input name="equipment_5" value="B041" type="hidden" />'
-        //エアコン living
-        + '<input name="equipment_4" value="8030B317" type="hidden" />'
-        //light
-        + '<input name="equipment_3" value="8031" type="hidden" />'
+    },
+    HouseNo = {
+      switchHouse : String()
+        + '<input name="house_no" value="160" type="hidden" />',
+      robotHouse : String()
+        + '<input name="house_no" value="187" type="hidden" />'
+    },
+    Blind = {
+      obj_01 : 'equipment_17',
+      obj_02 : 'equipment_18',
+      obj_03 : 'equipment_19',
+      open  : 'E041',
+      close : 'E042'
+    }
+
+
+
+  var
+    HtmlMap ={
+      morning : String()
+        + TextMap.head
+        + HouseNo.switchHouse
+        + '<input name="' + Blind.obj_01 + '" value="' + Blind.close + '" type="hidden" />'
+        + '<input name="equipment_18" value="E042" type="hidden" />'
+        + '<input name="equipment_19" value="E042" type="hidden" />'
         + '<input class="on" type="submit" value="あさ" />'
         + '</form>',
       day : String()
