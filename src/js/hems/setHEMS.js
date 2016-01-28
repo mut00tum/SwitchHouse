@@ -2,18 +2,8 @@ var Map = require( './map' );
 
 module.exports = function setHEMS() {
 
+  var URL;
   var
-    URL = {
-      pre : 'https://pre.ideagenerator.jp/api/',
-      on  : 'https://www.ideaGenerator.jp/api/'
-    }
-    TextMap = {
-      head :  String()
-        + '<form id="form" action="' + URL.pre + '" target="f1" method="post">'
-        + '<input name="id" value="mutoko" type="hidden" />'
-        + '<input name="pw" value="b2vs8nit" type="hidden" />'
-        + '<input name="mode" value="set" type="hidden" />'
-    },
     HouseNo = {
       switchHouse : String()
         + '<input name="house_no" value="160" type="hidden" />',
@@ -26,15 +16,6 @@ module.exports = function setHEMS() {
       obj_03 : 'equipment_19',
       open  : 'E041',
       close : 'E042'
-    },
-    LightEL = {
-      obj_01 : 'equipment_3',
-      on  : '8030',
-      off : '8031',
-      modeNormal : 'B642',
-      modeColor : 'B644',
-      yellow : 'C0f9fb26',
-      pink   : 'C0ff57a2'
     },
     Air = {
       obj_01 : 'equipment_20',
@@ -53,17 +34,32 @@ module.exports = function setHEMS() {
       open   : 'E041',
       close  : 'E042'
     },
-    Light = {
-      obj_01 : 'equipment_15',
-      obj_02 : 'equipment_16',
-      on     : '8030',
-      off    : '8031',
+    LightEL = {
+      obj_01 : 'equipment_3',
+      on  : '8030',
+      off : '8031',
       modeNormal : 'B642',
       modeColor : 'B644',
       orange : 'C0ff9f08',
       yellow : 'C0f9fb26',
       pink   : 'C0ff57a2',
       blue   : 'C03543ff'
+    },
+    LightHue = {
+      obj_01 : 'equipment_15',
+      on     : '8030',
+      off    : '8031',
+      modeNormal : 'B642',
+      modeColor : 'B644',
+      orange : 'E9ff9f08',
+      yellow : 'E9f9fb26',
+      pink   : 'E9ff57a2',
+      blue   : 'E93543ff'
+    },
+    Light = {
+      obj_01 : 'equipment_16',
+      on     : '8030',
+      off    : '8031'
     },
     SwitchHA = {
       obj_01 : 'equipment_25',
@@ -83,67 +79,104 @@ module.exports = function setHEMS() {
     TimeState = {
       morning : 'あさ',
       day     : 'ひる',
-      night   : 'よる'
+      night   : 'よる',
+      yoga    : 'ヨガ',
+      air     : '換気'
     }
 
   var
     HtmlMap ={
       morning : String()
-        + TextMap.head
+        // + TextMap.head
         + HouseNo.switchHouse
         + '<input name="' + Blind.obj_01 + '" value="' + Blind.open + '" type="hidden" />'
         + '<input name="' + Blind.obj_02 + '" value="' + Blind.open + '" type="hidden" />'
         + '<input name="' + Blind.obj_03 + '" value="' + Blind.open + '" type="hidden" />'
         + '<input name="' + LightEL.obj_01 + '" value="' + LightEL.off + '" type="hidden" />'
         + '<input name="' + Air.obj_01 + '" value="' + Air.off + '" type="hidden" />'
-        + '<input name="' + Air.obj_02 + '" value="' + Air.on + Air.modeHeat + Air.temp26 + '" type="hidden" />'
+        + '<input name="' + Air.obj_02 + '" value="' + Air.on + Air.modeHeat + Air.temp23 + '" type="hidden" />'
         + '<input name="' + Air.obj_03 + '" value="' + Air.off + '" type="hidden" />'
         + '<input name="' + Window.obj_01 + '" value="' + Window.open + '" type="hidden" />'
         + '<input name="' + Window.obj_02 + '" value="' + Window.open + '" type="hidden" />'
+        + '<input name="' + LightHue.obj_01 + '" value="' + LightHue.off + '" type="hidden" />'
         + '<input name="' + Light.obj_01 + '" value="' + Light.off + '" type="hidden" />'
-        // + '<input name="' + Light.obj_01 + '" value="' + Light.on + Light.modeColor + Light.orange + '" type="hidden" />'
-        + '<input name="' + Light.obj_02 + '" value="' + Light.off + '" type="hidden" />'
         + '<input name="' + SwitchHA.obj_01 + '" value="' + SwitchHA.off + '" type="hidden" />'
         + '<input name="' + Btn.obj_01 + '" value="' + Btn.off + '" type="hidden" />'
         + '<input class="on" type="submit" value="' + TimeState.morning + '" />'
         + '</form>',
       day : String()
-        + '<form id="form" action="https://pre.ideagenerator.jp/api/" target="f1" method="post">'
-        + '<input name="id" value="mutoko" type="hidden" />'
-        + '<input name="pw" value="b2vs8nit" type="hidden" />'
-        + '<input name="mode" value="set" type="hidden" />'
-        + '<input name="house_no" value="160" type="hidden" />'
-        //電動ブラインド
-        + '<input name="equipment_2" value="EA42" type="hidden" />'
-        //エアコン bedroom
-        + '<input name="equipment_1" value="8031B319" type="hidden" />'
-        //浴室暖房乾燥機
-        + '<input name="equipment_5" value="B046" type="hidden" />'
-        //エアコン living
-        + '<input name="equipment_4" value="8031B319" type="hidden" />'
-        //light
-        + '<input name="equipment_3" value="8031" type="hidden" />'
-        + '<input class="on" type="submit" value="ひる" />'
+        // + TextMap.head
+        + HouseNo.switchHouse
+        + '<input name="' + Blind.obj_01 + '" value="' + Blind.close + '" type="hidden" />'
+        + '<input name="' + Blind.obj_02 + '" value="' + Blind.close + '" type="hidden" />'
+        + '<input name="' + Blind.obj_03 + '" value="' + Blind.close + '" type="hidden" />'
+        + '<input name="' + LightEL.obj_01 + '" value="' + LightEL.off + '" type="hidden" />'
+        + '<input name="' + Air.obj_01 + '" value="' + Air.off + '" type="hidden" />'
+        + '<input name="' + Air.obj_02 + '" value="' + Air.off + '" type="hidden" />'
+        + '<input name="' + Air.obj_03 + '" value="' + Air.off + '" type="hidden" />'
+        + '<input name="' + Window.obj_01 + '" value="' + Window.close + '" type="hidden" />'
+        + '<input name="' + Window.obj_02 + '" value="' + Window.close + '" type="hidden" />'
+        + '<input name="' + LightHue.obj_01 + '" value="' + LightHue.off + '" type="hidden" />'
+        + '<input name="' + Light.obj_01 + '" value="' + Light.off + '" type="hidden" />'
+        + '<input name="' + SwitchHA.obj_01 + '" value="' + SwitchHA.off + '" type="hidden" />'
+        + '<input name="' + Btn.obj_01 + '" value="' + Btn.off + '" type="hidden" />'
+        + '<input class="on" type="submit" value="' + TimeState.day + '" />'
         + '</form>',
       night : String()
-        + '<form id="form" action="https://pre.ideagenerator.jp/api/" target="f1" method="post">'
+        // + TextMap.head
+        + HouseNo.switchHouse
+        + '<input name="' + Blind.obj_01 + '" value="' + Blind.close + '" type="hidden" />'
+        + '<input name="' + Blind.obj_02 + '" value="' + Blind.close + '" type="hidden" />'
+        + '<input name="' + Blind.obj_03 + '" value="' + Blind.close + '" type="hidden" />'
+        + '<input name="' + LightEL.obj_01 + '" value="' + LightEL.on +  LightEL.modeColor + LightEL.orange + '" type="hidden" />'
+        + '<input name="' + Air.obj_01 + '" value="' + Air.on + Air.modeHeat + Air.temp23 + '" type="hidden" />'
+        + '<input name="' + Air.obj_02 + '" value="' + Air.on + Air.modeHeat + Air.temp26 + '" type="hidden" />'
+        + '<input name="' + Air.obj_03 + '" value="' + Air.off + '" type="hidden" />'
+        + '<input name="' + Window.obj_01 + '" value="' + Window.close + '" type="hidden" />'
+        + '<input name="' + Window.obj_02 + '" value="' + Window.close + '" type="hidden" />'
+        + '<input name="' + LightHue.obj_01 + '" value="' + LightHue.on + LightHue.modeColor + LightHue.orange + '" type="hidden" />'
+        + '<input name="' + Light.obj_01 + '" value="' + Light.on + '" type="hidden" />'
+        + '<input name="' + SwitchHA.obj_01 + '" value="' + SwitchHA.off + '" type="hidden" />'
+        + '<input name="' + Btn.obj_01 + '" value="' + Btn.off + '" type="hidden" />'
+        + '<input class="on" type="submit" value="' + TimeState.night + '" />'
+        + '</form>',
+      yoga : String()
+        // + TextMap.head
+        + HouseNo.switchHouse
+        + '<input name="' + Blind.obj_01 + '" value="' + Blind.close + '" type="hidden" />'
+        + '<input name="' + Blind.obj_02 + '" value="' + Blind.close + '" type="hidden" />'
+        + '<input name="' + Blind.obj_03 + '" value="' + Blind.close + '" type="hidden" />'
+        + '<input name="' + LightEL.obj_01 + '" value="' + LightEL.off +  LightEL.modeColor + LightEL.orange + '" type="hidden" />'
+        + '<input name="' + Air.obj_01 + '" value="' + Air.off + Air.modeHeat + Air.temp26 + '" type="hidden" />'
+        + '<input name="' + Air.obj_02 + '" value="' + Air.on + Air.modeHeat + Air.temp30 + '" type="hidden" />'
+        + '<input name="' + Air.obj_03 + '" value="' + Air.off + '" type="hidden" />'
+        + '<input name="' + Window.obj_01 + '" value="' + Window.close + '" type="hidden" />'
+        + '<input name="' + Window.obj_02 + '" value="' + Window.close + '" type="hidden" />'
+        + '<input name="' + LightHue.obj_01 + '" value="' + LightHue.on + LightHue.modeColor + LightHue.pink + '" type="hidden" />'
+        + '<input name="' + Light.obj_01 + '" value="' + Light.off + '" type="hidden" />'
+        + '<input name="' + SwitchHA.obj_01 + '" value="' + SwitchHA.on + '" type="hidden" />'
+        + '<input name="' + Btn.obj_01 + '" value="' + Btn.on + '" type="hidden" />'
+        + '<input class="on" type="submit" value="' + TimeState.morning + '" />'
+        + '</form>'
+    };
+
+    var select = Map().selectVal.val();
+
+    URL = select;
+
+    Map().urlSelect.change( function(){
+      select = Map().selectVal.val();
+      URL = select;
+      console.log( URL )
+    });
+
+    function getHead( url ) {
+      return  String()
+        + '<form id="form" action="' + url + '" target="f1" method="post">'
         + '<input name="id" value="mutoko" type="hidden" />'
         + '<input name="pw" value="b2vs8nit" type="hidden" />'
         + '<input name="mode" value="set" type="hidden" />'
-        + '<input name="house_no" value="160" type="hidden" />'
-        //電動ブラインド
-        + '<input name="equipment_2" value="EA42" type="hidden" />'
-        //エアコン bedroom
-        + '<input name="equipment_1" value="8030B319" type="hidden" />'
-        //浴室暖房乾燥機
-        + '<input name="equipment_5" value="B042" type="hidden" />'
-        //エアコン living
-        + '<input name="equipment_4" value="8030B319" type="hidden" />'
-        //light
-        + '<input name="equipment_3" value="8030" type="hidden" />'
-        + '<input class="on" type="submit" value="よる" />'
-        + '</form>'
-    };
+    }
 
     //init
     Map().HEMSButton.html( HtmlMap.morning );
@@ -175,7 +208,7 @@ module.exports = function setHEMS() {
           break;
       }
 
-      Map().HEMSButton.html( hour );
+      Map().HEMSButton.html( getHead( URL ) + hour );
     }
 
 }
