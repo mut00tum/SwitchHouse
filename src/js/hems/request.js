@@ -1,12 +1,8 @@
-var houseState = require( './houseState' );
+// var houseState = require( './houseState' );
 
 module.exports = function request() {
 
   var
-    URL = {
-      local : 'http://localhost:8000',
-      heroku : 'http://the-hemshouse.herokuapp.com'
-    },
     OFF = {
       prop : '/off',
       data : { switch : 'off' }
@@ -23,7 +19,7 @@ module.exports = function request() {
   function getJsonRequest(){
     $.ajax({
       type: 'GET',
-      url: URL.heroku + GET.prop,
+      url: Map().Url + GET.prop,
       // dataType:"jsonp",
       // jsonpCallback: 'callback',
       contentType: 'application/json',
@@ -41,7 +37,7 @@ module.exports = function request() {
     function action( data ) {
       RequestJson = data;
       console.log( RequestJson )
-      houseState().set( data );
+      // houseState().set( data );
       offRequest();
     }
   }
@@ -51,7 +47,7 @@ module.exports = function request() {
 
     $.ajax({
       type: 'POST',
-      url: URL.heroku + OFF.prop,
+      url: Map().Url + OFF.prop,
       data: data,
       contentType: 'application/json',
       success: function(data){
@@ -71,7 +67,7 @@ module.exports = function request() {
 
   //   $.ajax({
   //     type: 'POST',
-  //     url: URL.local + ON.prop,
+  //     url: Map().Url + ON.prop,
   //     data: data,
   //     contentType: 'application/json',
   //     success: function(data){

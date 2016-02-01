@@ -43,22 +43,23 @@
   #mesh h2 {
     margin-bottom: 40px; }
   #mesh .tag {
+    position: relative;
     width: 212px;
     height: 259px;
     margin: 0 auto;
     padding-top: 23px;
     background: url(../img/mesh/body.png) no-repeat; }
 
-#HEMSButton .on {
-  position: relative;
-  left: -5px;
+#HEMSButton {
+  position: absolute;
+  left: 57px;
   width: 86px;
   height: 80px;
   border: none;
   background-color: none;
   background: url(../img/mesh/btn_off.png) no-repeat;
   cursor: pointer; }
-  #HEMSButton .on:hover {
+  #HEMSButton:hover {
     background: url(../img/mesh/btn_on.png) no-repeat; }
 
 #house {
