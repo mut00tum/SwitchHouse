@@ -7,7 +7,7 @@ module.exports = function Map() {
     };
 
   return {
-    Url         : Url.local,
+    Url         : Url.heroku,
     HEMSButton  : $( '#HEMSButton' ),
     ROBOTButton : $( '#ROBOTButton' ),
     robotON     : $( '#robotON' ),
