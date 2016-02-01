@@ -33,7 +33,7 @@
     "gulp-plumber": "^1.0.1",
     "gulp-sass": "^2.0.4",
     "gulp-uglify": "^1.4.1",
-    "request": "2.14.4",
+    "request": "2.61.0",
     "package_name": "^1.0.2"
   },
   "engines": {
