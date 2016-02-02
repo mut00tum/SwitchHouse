@@ -4,46 +4,69 @@
 		<meta charset="UTF-8">
 		<title>ザ・スイッチハウス</title>
 		<link href="files/css/style.css" rel="stylesheet" type="text/css" />
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Unica+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Quicksand:400,700,300' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
 		<div id="all">
-			<h1><img src="files/img/header/title.png" height="114" width="433" alt=""></h1>
+      <header id="header">
+        <h1><img src="files/img/header/title.png" height="59" width="340" alt=""></h1>
+        <p class="arrow"><img src="files/img/header/re_arrow.png" height="38" width="25" alt=""></p>
+      </header>
 
-      <section id="hourList">
-        <ul>
-          <li id="morningHour">
-            <label class="morning choose"><input type="radio" name="n1"/></label>
-          </li>
-          <li id="dayHour">
-            <label class="day choose"><input type="radio" name="n1"/></label>
-          </li>
-          <li id="nightHour">
-            <label class="night choose"><input type="radio" name="n1"/></label>
-          </li>
-        </ul>
-      </section>
-
-      <section id="mesh">
-        <h2><img src="files/img/mesh/title_push.png" height="95" width="245" alt=""></h2>
-        <div class="tag">
-
-          <div id="HEMSButton"></div>
-
+      <section id="setList">
+        <div id="timeList" class="list">
+          <h2><span>・</span>タイム</h2>
+          <ul>
+            <li id="morning">
+              <label class="morning choose"><input type="radio" name="n1"/></label>
+              <p class="set">morning</p>
+              <p class="edit btn"><img src="files/img/list/info.png" height="47" width="47" alt=""></p>
+            </li>
+            <li id="day">
+              <label class="day choose"><input type="radio" name="n1"/></label>
+              <p class="set">day</p>
+              <p class="edit btn"><img src="files/img/list/info.png" height="47" width="47" alt=""></p>
+            </li>
+            <li id="night">
+              <label class="night choose"><input type="radio" name="n1"/></label>
+              <p class="set">night</p>
+              <p class="edit btn"><img src="files/img/list/info.png" height="47" width="47" alt=""></p>
+            </li>
+          </ul>
         </div>
-        <!-- <div id="ROBOTButton"></div>
-        <div class="robot">
-          <a id="robotON" >on</a>
-          <a id="robotOFF" >off</a>
-        </div> -->
+
+        <div id="styleList" class="list">
+          <h2><span>・</span>スタイル</h2>
+          <ul>
+            <li id="yoga">
+              <label class="yoga choose"><input type="radio" name="n1"/></label>
+              <p class="set">yoga</p>
+              <p class="edit btn"><img src="files/img/list/info.png" height="47" width="47" alt=""></p>
+            </li>
+            <li id="air">
+              <label class="air choose"><input type="radio" name="n1"/></label>
+              <p class="set">air</p>
+              <p class="edit btn"><img src="files/img/list/info.png" height="47" width="47" alt=""></p>
+            </li>
+          </ul>
+        </div>
+
+        <div id="statusList" class="list">
+          <h2><span>・</span>ステータス</h2>
+          <ul>
+            <li id="myHouse">
+              <label class="myHouse choose"><input type="radio" name="n1"/></label>
+              <p class="set">house</p>
+              <p class="edit btn"><img src="files/img/list/info.png" height="47" width="47" alt=""></p>
+            </li>
+          </ul>
+        </div>
 
       </section>
 
-  	<iframe name="f1" width=0 height=0 style="visibility:hidden"></iframe>
-
-    <div id="house">
+   <!--  <div id="house">
       <iframe id="monitor" src="http://pre.ideagenerator.jp/monitor/mutoko/house/160"></iframe>
-    </div>
+    </div> -->
 
     <script src="files/js/app.js"></script>
 	</body>

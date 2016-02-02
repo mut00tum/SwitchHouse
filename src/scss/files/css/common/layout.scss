@@ -4,9 +4,13 @@
 /* 設定 */
 
 #all {
-  width: 980px;
-  padding-top: 20px;
+  width: 100%;
   margin: 0 auto;
-  text-align: center;
-  // background: map-get($color, base);
+  font-family: "Quicksand" , "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  // background: $bg_color;
+  // text-align: center;
+  img {
+    // @include fitImg;
+  }
 }
+

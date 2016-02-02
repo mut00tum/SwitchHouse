@@ -82,29 +82,21 @@ module.exports = function setHEMS() {
     });
   }
 
-  // setHemsProp( morning );
+  setHemsProp( morning );
 
-  Map.morningHour.on( 'click' , function() {
+  Map.morning.on( 'click' , function() {
     setHemsProp( morning );
   });
-  Map.dayHour.on( 'click' , function() {
+  Map.day.on( 'click' , function() {
     setHemsProp( day );
   });
-  Map.nightHour.on( 'click' , function() {
+  Map.night.on( 'click' , function() {
     setHemsProp( night );
   });
 
   Map.HEMSButton.on( 'click' , function(){
     reloadIframe();
   });
-
-  // if ( data['switch'] == 'on' ){
-
-  //   if ( $("#form") ){
-  //     $("#form").submit();
-  //     reloadIframe();
-  //   }
-  // }
 
   function reloadIframe() {
     var src = $("#monitor").attr("src");

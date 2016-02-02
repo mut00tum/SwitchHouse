@@ -3,41 +3,108 @@
 @import "setting";
 /* 設定 */
 
-#hourList  {
-  @include floatListCenter;
-  margin: 40px 0;
-  li {
+#header {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  background: $base_color;
+  text-align: center;
+  h1 {
+    // position: absolute;
+    // left: 0;
+    // right: 0;
+    padding: 15px 0 0 20px;
+    // margin:0 auto;
+  }
+  .arrow {
+    display: none;
+    position: absolute;
+    left: 50px;
+    top: 25px;
+  }
+}
+
+
+#setList  {
+  .list {
+    padding-top: 40px;
+    h2 {
+      padding-left: 20px;
+      font-size: 30px;
+      span {
+        font-weight: bold;
+        color: $gray;
+      }
+    }
+    ul {
+      border-top: 2px solid $yellowGray;
+      li {
+        float: left;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px 20px;
+        background: #fff;
+        border-bottom: 2px solid $yellowGray;
+      }
+      .set {
+        position: relative;
+        top: 20px;
+        float: left;
+        font-size: 40px;
+        font-weight: bold;
+      }
+      .edit {
+        position: relative;
+        top: 30px;
+        float: right;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// ▼label style
+#setList .list ul li {
+  label {
+    float: left;
+    margin-right: 20px;
     input[type='radio']{
       filter: alpha(opacity=0); -moz-opacity:0; opacity:0;
       position: absolute;
     }
-    .choose{
-      width: 250px;
-      height: 210px;
-      line-height: 28px;
-      display: block;
-      padding: 0 0 0 15px;
-      cursor: pointer;
-      overflow: hidden;
-    }
-    .morning {
-      background:url(../img/hourList/morningHour.png) no-repeat left bottom;
-    }
-    .day{
-      background:url(../img/hourList/dayHour.png) no-repeat left bottom;
-    }
-    .night {
-      background:url(../img/hourList/nightHour.png) no-repeat left bottom;
-    }
-    .current{
-      background-position:left top;
-    }
-
-    &:nth-child(-n+2) {
-      margin-right: 50px;
-    }
+  }
+  .choose{
+    width: 110px;
+    height: 110px;
+    line-height: 28px;
+    display: block;
+    padding: 0 0 0 15px;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .morning {
+    background:url(../img/list/morning.png) no-repeat left bottom;
+  }
+  .day{
+    background:url(../img/list/day.png) no-repeat left bottom;
+  }
+  .night {
+    background:url(../img/list/night.png) no-repeat left bottom;
+  }
+  .yoga {
+    background:url(../img/list/yoga.png) no-repeat left bottom;
+  }
+  .air{
+    background:url(../img/list/air.png) no-repeat left bottom;
+  }
+  .myHouse {
+    background:url(../img/list/house.png) no-repeat left bottom;
+  }
+  .current{
+    background-position:left top;
   }
 }
+
 
 #mesh {
   margin-bottom: 30px;

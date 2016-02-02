@@ -66,7 +66,7 @@ app.post("/setHEMS", function (req, res){
       fs.writeFileSync( path , JSON.stringify(option.form) );
     }
 
-    console.log( option.form )
+    // console.log( option.form )
 
     // SetAppRequest()
 
@@ -79,7 +79,7 @@ app.post("/setHEMS", function (req, res){
 
 
 function SetAppRequest() {
-  // console.log( option )
+  console.log( option.form )
   request.post( option , function( error, response, body ){
     if( !error && response.statusCode == 200 ) {
       var data = JSON.parse( body );

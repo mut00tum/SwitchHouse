@@ -7,14 +7,16 @@ module.exports = function Map() {
     };
 
   return {
-    Url         : Url.heroku,
+    Url         : Url.local,
     HEMSButton  : $( '#HEMSButton' ),
     ROBOTButton : $( '#ROBOTButton' ),
     robotON     : $( '#robotON' ),
     robotOFF    : $( '#robotOFF' ),
     selectVal   : $( '#urlSelect option:selected' ),
-    morningHour : $( '#morningHour' ),
-    dayHour     : $( '#dayHour' ),
-    nightHour   : $( '#nightHour' )
+    morning     : $( '#morning' ),
+    day         : $( '#day' ),
+    night       : $( '#night' ),
+    yoga        : $( '#yoga' ),
+    air         : $( '#air' )
   }
 }

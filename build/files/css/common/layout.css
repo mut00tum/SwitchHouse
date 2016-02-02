@@ -3,7 +3,6 @@
 /*extend*/
 /* 設定 */
 #all {
-  width: 980px;
-  padding-top: 20px;
+  width: 100%;
   margin: 0 auto;
-  text-align: center; }
+  font-family: "Quicksand" , "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; }
