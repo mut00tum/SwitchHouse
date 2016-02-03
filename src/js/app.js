@@ -1,23 +1,12 @@
-var setHEMS  = require( './hems/setHEMS' );
+var setHEMS = require( './hems/setHEMS' );
+var request = require( './hems/request' );
+var radio   = require( './ui/radio' );
+var slide   = require( './ui/slide' );
 // var setROBOT = require( './hems/robot' );
-var radio    = require( './ui/radio' );
-var request  = require( './hems/request' );
-// var houseState = require( './hems/houseState' );
 
-//hems
-
+// ▼HEMS
 setHEMS();
-// setROBOT();
 
-// setInterval( function(){
-//   request().getJsonRequest();
-// } , 1500 );
-
-// request().getJsonRequest();
-// request().offRequest();
-// request().onRequestTest();
-
-// houseState();
-
-// UI
+// ▼UI
 radio();
+slide();

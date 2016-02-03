@@ -1,4 +1,4 @@
-var Map = require( './map' );
+var Map = require( '../map/id' );
 
 module.exports = function setHEMS() {
 

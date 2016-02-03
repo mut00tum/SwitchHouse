@@ -4,61 +4,107 @@
 /* 設定 */
 
 #header {
-  position: relative;
+  position: fixed;
   width: 100%;
-  height: 90px;
   background: $base_color;
   text-align: center;
+  z-index: 10;
   h1 {
-    // position: absolute;
-    // left: 0;
-    // right: 0;
-    padding: 15px 0 0 20px;
-    // margin:0 auto;
+    margin: 0 auto;
+    padding: 12px 0 12px 15px;
+    img {
+      width: 180px;
+    }
   }
-  .arrow {
+  #backArrow {
     display: none;
     position: absolute;
-    left: 50px;
-    top: 25px;
+    left: 25px;
+    top: 12px;
+    width: 13px;
+    height: 17px;
+    cursor: pointer;
   }
 }
 
+#view {
+  position: relative;
+  // right: 100%;
+  right: 0;
+}
 
 #setList  {
+  position: relative;
+  // right: 100%;
+  right: 0;
+  padding-top: $header_height;
+  margin-bottom: 20px;
   .list {
-    padding-top: 40px;
+    padding-top: 30px;
     h2 {
-      padding-left: 20px;
-      font-size: 30px;
+      padding-left: 10px;
+      margin-bottom: 5px;
+      font-size: 18px;
+      font-weight: bold;
       span {
         font-weight: bold;
         color: $gray;
       }
     }
     ul {
-      border-top: 2px solid $yellowGray;
+      border-top: 1px solid $yellowGray;
       li {
+        position: relative;
         float: left;
         box-sizing: border-box;
         width: 100%;
-        padding: 10px 20px;
+        // padding: 8px 10px;
         background: #fff;
-        border-bottom: 2px solid $yellowGray;
-      }
-      .set {
-        position: relative;
-        top: 20px;
-        float: left;
-        font-size: 40px;
-        font-weight: bold;
-      }
-      .edit {
-        position: relative;
-        top: 30px;
-        float: right;
+        border-bottom: 1px solid $yellowGray;
         cursor: pointer;
+        &:hover {
+          // background: lighten( $lightYellow , 6 );
+        }
+        label {
+          float: left;
+          // width: 20%;
+          // padding: 10px 20px;
+          margin: 5px 10px;
+        }
+        .item {
+          float: left;
+          width: calc( 100% - ( 55px + 20px ) );
+          height: 55px;
+          .set {
+            position: relative;
+            top: 15px;
+            float: left;
+            font-size: 22px;
+            font-weight: bold;
+          }
+          .edit {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            float: right;
+            margin: auto;
+            padding: 0 10px;
+            cursor: pointer;
+          }
+          .btn {
+            right: 10px;
+            width: 23px;
+            height: 23px;
+          }
+          .arrow {
+            top: -7px;
+            right: 20px;
+            width: 8px;
+            height: 23px;
+          }
+        }
       }
+
     }
   }
 }
@@ -66,74 +112,164 @@
 // ▼label style
 #setList .list ul li {
   label {
-    float: left;
-    margin-right: 20px;
     input[type='radio']{
-      filter: alpha(opacity=0); -moz-opacity:0; opacity:0;
+      opacity:0;
       position: absolute;
     }
   }
   .choose{
-    width: 110px;
-    height: 110px;
-    line-height: 28px;
+    box-sizing: border-box;
+    width: 55px;
+    height: 55px;
+    line-height: 14px;
     display: block;
-    padding: 0 0 0 15px;
+    // padding: 0 0 0 8px;
     cursor: pointer;
     overflow: hidden;
+    background: no-repeat left bottom;
+    background-size: 200%;
   }
   .morning {
-    background:url(../img/list/morning.png) no-repeat left bottom;
+    background-image:url(../img/list/morning.png);
   }
   .day{
-    background:url(../img/list/day.png) no-repeat left bottom;
+    background-image:url(../img/list/day.png);
   }
   .night {
-    background:url(../img/list/night.png) no-repeat left bottom;
+    background-image:url(../img/list/night.png);
   }
   .yoga {
-    background:url(../img/list/yoga.png) no-repeat left bottom;
+    background-image:url(../img/list/yoga.png);
   }
   .air{
-    background:url(../img/list/air.png) no-repeat left bottom;
+    background-image:url(../img/list/air.png);
   }
   .myHouse {
-    background:url(../img/list/house.png) no-repeat left bottom;
+    background-image:url(../img/list/house.png);
   }
-  .current{
-    background-position:left top;
-  }
-}
-
-
-#mesh {
-  margin-bottom: 30px;
-  h2 {
-    margin-bottom: 40px;
-  }
-  .tag {
-    position:relative;
-    width: 212px;
-    height: 259px;
-    margin: 0 auto;
-    padding-top: 23px;
-    background: url(../img/mesh/body.png) no-repeat;
+  .current {
+    background-position: right bottom;
   }
 }
 
-  #HEMSButton {
-      position:absolute;
-      left: 57px;
-      width: 86px;
-      height: 80px;
-      border: none;
-      background-color: none;
-      background: url(../img/mesh/btn_off.png) no-repeat;
-      cursor: pointer;
-      &:hover {
-        background: url(../img/mesh/btn_on.png) no-repeat;
+#setting {
+  padding-top: $header_height;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  // left: 0;
+  width: 100%;
+}
+
+#setHeader {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+  text-align: center;
+  h1 {
+    position: relative;
+    left: 50%;
+    float: left;
+    height: 40px;
+    .wrapper {
+      img, span {
+        position: relative;
+        left: -50%;
+        float: left;
       }
+      img {
+        width: 55px;
+        height: 55px;
+        margin-right: 5px;
+      }
+      span {
+        padding-top: 15px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
   }
+}
+
+#setBody {
+  padding: 10px;
+  margin-bottom: 20px;
+  & > ul {
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 rgba( #000 , .1 );
+    & > li {
+      float: left;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 10px 20px;
+      background: #fff;
+      border-bottom: 1px solid $yellowGray;
+      &:first-child {
+        border-radius: 8px 8px 0 0;
+      }
+      &:last-child {
+        border-radius: 0 0 8px 8px;
+        border-bottom: none;
+      }
+      h2 {
+        display: inline-block;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+  #setBody ul.status {
+    float: right;
+    li {
+      margin-bottom: 10px;
+      text-align: right;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      label {
+      }
+      select {
+        width: 80px;
+        text-align: center;
+        font-size: 14px;
+      }
+    }
+  }
+
+#setting .btnArea {
+  text-align: center;
+  margin-bottom: 40px;
+  .btn {
+    width: 70%;
+    padding: 10px 0;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 rgba( #000 , .1 );
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    &:first-child {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+#setHEMS {
+  background: $base_color;
+  &:hover {
+    background: lighten( $base_color , 8 );
+  }
+}
+
+#changeState {
+  background: $skyBulue;
+  &:hover {
+    background: lighten( $skyBulue , 10 );
+  }
+}
+
 
 #house {
   margin-bottom: 50px;

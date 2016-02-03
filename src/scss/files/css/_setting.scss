@@ -1,16 +1,14 @@
 // setting
 $base_color: #8ad124;
 $bg_color: #f5f6e1;
+$lightYellow: #f5fbc2;
+$skyBulue: #24bbd1;
 $gray: #a2a2a2;
+$darkGray: #919191;
 $yellowGray: #cacabf;
+$lightGray: #ececec;
 
-$baseFontSize:16px;
-$baseTitleSize:30px;
-$baseSubSize:24px;
-
-$mobileFontSize:22px;
-$mobileTitleSize:36px;
-$mobileSubSize:30px;
+$header_height: 56px;
 
 // Dir
 $commonImgDir  : "../../img/common/";
@@ -54,7 +52,8 @@ $mv: 900px;
 }
 
 @mixin fitImg {
-  width:100%;
+  max-width:100%;
+  // width:100%;
   height: auto;
 }
 

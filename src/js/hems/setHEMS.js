@@ -1,5 +1,5 @@
-var Map = require( './map' )();
-var Obj = require( './objMap' )();
+var Map = require( '../map/id' )();
+var Obj = require( '../map/HEMSobj' )();
 
 module.exports = function setHEMS() {
 
@@ -65,7 +65,6 @@ module.exports = function setHEMS() {
       SwitchHA  : { obj: Obj.SwitchHA.obj_01 , state: Obj.SwitchHA.off }
     }
 
-
   function setHemsProp( setData ){
     var data = JSON.stringify( setData );
 
@@ -93,10 +92,13 @@ module.exports = function setHEMS() {
   Map.night.on( 'click' , function() {
     setHemsProp( night );
   });
-
-  Map.HEMSButton.on( 'click' , function(){
-    reloadIframe();
+  Map.yoga.on( 'click' , function() {
+    setHemsProp( yoga );
   });
+  Map.air.on( 'click' , function() {
+    setHemsProp( air );
+  });
+
 
   function reloadIframe() {
     var src = $("#monitor").attr("src");

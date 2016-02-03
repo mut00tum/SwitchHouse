@@ -1,4 +1,4 @@
-var Map     = require( './map' )();
+var Map     = require( '../map/id' )();
 // var request = require( './request' );
 // var setHems = require( './setHEMS' );
 

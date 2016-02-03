@@ -13,6 +13,9 @@ module.exports = function objMap() {
       on  : '8030',
       off : '8031',
       modeHeat : 'B043',
+      modeCool : 'B042',
+      modeDry  : 'B044',
+      modeWind : 'B045',
       temp23 : 'B317',
       temp26 :'B31A',
       temp30 : 'B31E'

@@ -3,110 +3,210 @@
 /*extend*/
 /* 設定 */
 #header {
-  position: relative;
+  position: fixed;
   width: 100%;
-  height: 90px;
   background: #8ad124;
-  text-align: center; }
+  text-align: center;
+  z-index: 10; }
   #header h1 {
-    padding: 15px 0 0 20px; }
-  #header .arrow {
+    margin: 0 auto;
+    padding: 12px 0 12px 15px; }
+    #header h1 img {
+      width: 180px; }
+  #header #backArrow {
     display: none;
     position: absolute;
-    left: 50px;
-    top: 25px; }
+    left: 25px;
+    top: 12px;
+    width: 13px;
+    height: 17px;
+    cursor: pointer; }
 
-#setList .list {
-  padding-top: 40px; }
-  #setList .list h2 {
-    padding-left: 20px;
-    font-size: 30px; }
-    #setList .list h2 span {
-      font-weight: bold;
-      color: #a2a2a2; }
-  #setList .list ul {
-    border-top: 2px solid #cacabf; }
-    #setList .list ul li {
+#view {
+  position: relative;
+  right: 0; }
+
+#setList {
+  position: relative;
+  right: 0;
+  padding-top: 56px;
+  margin-bottom: 20px; }
+  #setList .list {
+    padding-top: 30px; }
+    #setList .list h2 {
+      padding-left: 10px;
+      margin-bottom: 5px;
+      font-size: 18px;
+      font-weight: bold; }
+      #setList .list h2 span {
+        font-weight: bold;
+        color: #a2a2a2; }
+    #setList .list ul {
+      border-top: 1px solid #cacabf; }
+      #setList .list ul li {
+        position: relative;
+        float: left;
+        box-sizing: border-box;
+        width: 100%;
+        background: #fff;
+        border-bottom: 1px solid #cacabf;
+        cursor: pointer; }
+        #setList .list ul li label {
+          float: left;
+          margin: 5px 10px; }
+        #setList .list ul li .item {
+          float: left;
+          width: calc( 100% - ( 55px + 20px ));
+          height: 55px; }
+          #setList .list ul li .item .set {
+            position: relative;
+            top: 15px;
+            float: left;
+            font-size: 22px;
+            font-weight: bold; }
+          #setList .list ul li .item .edit {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            float: right;
+            margin: auto;
+            padding: 0 10px;
+            cursor: pointer; }
+          #setList .list ul li .item .btn {
+            right: 10px;
+            width: 23px;
+            height: 23px; }
+          #setList .list ul li .item .arrow {
+            top: -7px;
+            right: 20px;
+            width: 8px;
+            height: 23px; }
+
+#setList .list ul li label input[type='radio'] {
+  opacity: 0;
+  position: absolute; }
+
+#setList .list ul li .choose {
+  box-sizing: border-box;
+  width: 55px;
+  height: 55px;
+  line-height: 14px;
+  display: block;
+  cursor: pointer;
+  overflow: hidden;
+  background: no-repeat left bottom;
+  background-size: 200%; }
+
+#setList .list ul li .morning {
+  background-image: url(../img/list/morning.png); }
+
+#setList .list ul li .day {
+  background-image: url(../img/list/day.png); }
+
+#setList .list ul li .night {
+  background-image: url(../img/list/night.png); }
+
+#setList .list ul li .yoga {
+  background-image: url(../img/list/yoga.png); }
+
+#setList .list ul li .air {
+  background-image: url(../img/list/air.png); }
+
+#setList .list ul li .myHouse {
+  background-image: url(../img/list/house.png); }
+
+#setList .list ul li .current {
+  background-position: right bottom; }
+
+#setting {
+  padding-top: 56px;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%; }
+
+#setHeader {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+  text-align: center; }
+  #setHeader h1 {
+    position: relative;
+    left: 50%;
+    float: left;
+    height: 40px; }
+    #setHeader h1 .wrapper img, #setHeader h1 .wrapper span {
+      position: relative;
+      left: -50%;
+      float: left; }
+    #setHeader h1 .wrapper img {
+      width: 55px;
+      height: 55px;
+      margin-right: 5px; }
+    #setHeader h1 .wrapper span {
+      padding-top: 15px;
+      font-size: 20px;
+      font-weight: bold; }
+
+#setBody {
+  padding: 10px;
+  margin-bottom: 20px; }
+  #setBody > ul {
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1); }
+    #setBody > ul > li {
       float: left;
       box-sizing: border-box;
       width: 100%;
       padding: 10px 20px;
       background: #fff;
-      border-bottom: 2px solid #cacabf; }
-    #setList .list ul .set {
-      position: relative;
-      top: 20px;
-      float: left;
-      font-size: 40px;
-      font-weight: bold; }
-    #setList .list ul .edit {
-      position: relative;
-      top: 30px;
-      float: right;
-      cursor: pointer; }
+      border-bottom: 1px solid #cacabf; }
+      #setBody > ul > li:first-child {
+        border-radius: 8px 8px 0 0; }
+      #setBody > ul > li:last-child {
+        border-radius: 0 0 8px 8px;
+        border-bottom: none; }
+      #setBody > ul > li h2 {
+        display: inline-block;
+        font-size: 18px; }
 
-#setList .list ul li label {
-  float: left;
-  margin-right: 20px; }
-  #setList .list ul li label input[type='radio'] {
-    filter: alpha(opacity=0);
-    -moz-opacity: 0;
-    opacity: 0;
-    position: absolute; }
+#setBody ul.status {
+  float: right; }
+  #setBody ul.status li {
+    margin-bottom: 10px;
+    text-align: right; }
+    #setBody ul.status li:last-child {
+      margin-bottom: 0; }
+    #setBody ul.status li select {
+      width: 80px;
+      text-align: center;
+      font-size: 14px; }
 
-#setList .list ul li .choose {
-  width: 110px;
-  height: 110px;
-  line-height: 28px;
-  display: block;
-  padding: 0 0 0 15px;
-  cursor: pointer;
-  overflow: hidden; }
-
-#setList .list ul li .morning {
-  background: url(../img/list/morning.png) no-repeat left bottom; }
-
-#setList .list ul li .day {
-  background: url(../img/list/day.png) no-repeat left bottom; }
-
-#setList .list ul li .night {
-  background: url(../img/list/night.png) no-repeat left bottom; }
-
-#setList .list ul li .yoga {
-  background: url(../img/list/yoga.png) no-repeat left bottom; }
-
-#setList .list ul li .air {
-  background: url(../img/list/air.png) no-repeat left bottom; }
-
-#setList .list ul li .myHouse {
-  background: url(../img/list/house.png) no-repeat left bottom; }
-
-#setList .list ul li .current {
-  background-position: left top; }
-
-#mesh {
-  margin-bottom: 30px; }
-  #mesh h2 {
-    margin-bottom: 40px; }
-  #mesh .tag {
-    position: relative;
-    width: 212px;
-    height: 259px;
+#setting .btnArea {
+  text-align: center;
+  margin-bottom: 40px; }
+  #setting .btnArea .btn {
+    width: 70%;
+    padding: 10px 0;
     margin: 0 auto;
-    padding-top: 23px;
-    background: url(../img/mesh/body.png) no-repeat; }
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer; }
+    #setting .btnArea .btn:first-child {
+      margin-bottom: 20px; }
 
-#HEMSButton {
-  position: absolute;
-  left: 57px;
-  width: 86px;
-  height: 80px;
-  border: none;
-  background-color: none;
-  background: url(../img/mesh/btn_off.png) no-repeat;
-  cursor: pointer; }
-  #HEMSButton:hover {
-    background: url(../img/mesh/btn_on.png) no-repeat; }
+#setHEMS {
+  background: #8ad124; }
+  #setHEMS:hover {
+    background: #9dde40; }
+
+#changeState {
+  background: #24bbd1; }
+  #changeState:hover {
+    background: #48cce0; }
 
 #house {
   margin-bottom: 50px; }
