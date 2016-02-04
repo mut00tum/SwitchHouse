@@ -12,16 +12,16 @@ var
     day     : './json/day.json',
     night   : './json/night.json',
     yoga    : './json/yoga.json',
-    air     : './json/air.json'
+    air     : './json/air.json',
+    house   : './json/house.json'
   },
   option = {
     uri  : 'https://pre.ideaGenerator.jp/api/',
     form: {
       id: 'mutoko',
       pw: 'b2vs8nit',
-      mode : 'set',
+      // mode : 'set',
       house_no : '160'
-      // equipment_17 : Val
     }
   },
   Val = '';
@@ -34,17 +34,33 @@ console.log( "start listening at 8000" );
 // app.listen(8000);
 app.listen(process.env.PORT || 8000);
 
+function getAppRequestToJson( path ) {
+  option.form['mode'] = 'get'
+  request.post( option , function( error, response, body ){
+    if( !error && response.statusCode == 200 ) {
+      var json = JSON.parse( body );
+      fs.writeFileSync( path , JSON.stringify( json ) );
+    } else {
+      console.log( 'error: ' + response.statusCode );
+    }
+  });
+}
 
-app.post("/setHEMS", function (req, res){
-  try {
-    // console.log( req.url )
-    var data = req.body;
-    Object.keys(data).forEach(function(key){
-      option.form[data[key].obj] = data[key].state;
-    });
+function setAppRequest() {
+  option.form['mode'] = 'set'
+  request.post( option , function( error, response, body ){
+    if( !error && response.statusCode == 200 ) {
+      // var data = JSON.parse( body );
+      console.log( 'setAppRequest succeed!' )
+    } else {
+      console.log( 'error: ' + response.statusCode );
+    }
+  });
+}
 
-    var path = ''
-    switch(data.time) {
+function switcher( set ) {
+  var path = ''
+    switch( set ) {
       case 'morning':
         path = Json.morning;
         break;
@@ -61,15 +77,15 @@ app.post("/setHEMS", function (req, res){
         path = Json.air;
         break;
     }
+  return path;
+}
 
-    if( !path == '' ){
-      fs.writeFileSync( path , JSON.stringify(option.form) );
-    }
-
-    // console.log( option.form )
-
-    // SetAppRequest()
-
+app.post("/setHEMS", function (req, res){
+  try {
+    var data = req.body;
+    Object.keys(data.State).forEach(function(key){
+      option.form[data.State[key].obj] = data.State[key].state;
+    });
     res.status(200).end();
 
   } catch(e) {
@@ -77,27 +93,26 @@ app.post("/setHEMS", function (req, res){
   }
 });
 
+app.post("/getHouseState", function (req, res){
+  try {
+    var data = req.body;
+    Object.keys(data.State).forEach(function(key){
+      option.form[data.State[key].obj] = data.State[key].state;
+    });
+    getAppRequestToJson( Json.house );
+    res.status(200).end();
+  } catch(e) {
+    console.log( 'SET: /off: error!' )
+  }
+});
 
-function SetAppRequest() {
-  console.log( option.form )
-  request.post( option , function( error, response, body ){
-    if( !error && response.statusCode == 200 ) {
-      var data = JSON.parse( body );
-      // console.log( data )
-    } else {
-      console.log( 'error: ' + response.statusCode );
-    }
-  });
-}
-
-function GetAppRequest() {
-
-}
-
-app.get( "/hems" , function (req, res){
+app.post( "/getSetState" , function (req, res){
   try {
     res.set('Content-Type', 'application/json');
-    var data = JSON.parse( fs.readFileSync( Json.switch , 'utf8' ) );
+    var data = req.body;
+    var path = switcher( data.set )
+
+    var data = JSON.parse( fs.readFileSync( path , 'utf8' ) );
     res.json( data );
     res.status(200).end();
   } catch(e) {
@@ -105,19 +120,18 @@ app.get( "/hems" , function (req, res){
   }
 });
 
-app.post("/off", function (req, res){
-  try {
-    fs.writeFileSync( Json.switch , JSON.stringify(req.body));
-    res.status(200).end();
-  } catch(e) {
-    console.log( 'POST: /off: error!' )
-  }
-});
+// app.post("/off", function (req, res){
+//   try {
+//     fs.writeFileSync( Json.switch , JSON.stringify(req.body));
+//     res.status(200).end();
+//   } catch(e) {
+//     console.log( 'POST: /off: error!' )
+//   }
+// });
 
 app.post("/on", function (req, res){
   try {
-    SetAppRequest();
-    // fs.writeFileSync( Json.switch , JSON.stringify(req.body));
+    setAppRequest();
     res.status(200).end();
   } catch(e) {
     console.log( 'POST: /on: error!' )

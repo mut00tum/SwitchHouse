@@ -21,7 +21,6 @@
     position: absolute;
     left: 10px;
     top: 0;
-    // box-sizing: border-box;
     width: 40px;
     height: 40px;
     padding: 8px;
@@ -36,25 +35,19 @@
 }
 
 #setView {
-  // display:none;
   position: absolute;
   top: 0;
-  // right: 0;
-  // right: 100%;
   width: 100%;
   height: 100%;
   overflow-x: visible;
   overflow-y: scroll;
   background: $bg_color;
   -webkit-overflow-scrolling: touch;
-  // z-index: 20;
 }
 
 #settingView {
   position: absolute;
   top:0;
-  // right: 0;
-  // right: 100%;
   width: 100%;
   height: 100%;
   overflow-x: visible;
@@ -66,16 +59,15 @@
 
 #setList  {
   position: relative;
-  // right: 100%;
   right: 0;
   padding-top: $header_height;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   .list {
     padding-top: 30px;
     h2 {
       padding-left: 10px;
       margin-bottom: 5px;
-      font-size: 18px;
+      font-size: 10px;
       font-weight: bold;
       span {
         font-weight: bold;
@@ -89,17 +81,17 @@
         float: left;
         box-sizing: border-box;
         width: 100%;
-        // padding: 8px 10px;
         background: #fff;
         border-bottom: 1px solid $yellowGray;
         cursor: pointer;
+        &:active {
+          background: lighten( $lightYellow , 6 );
+        }
         &:hover {
           // background: lighten( $lightYellow , 6 );
         }
         label {
           float: left;
-          // width: 20%;
-          // padding: 10px 20px;
           margin: 5px 10px;
         }
         .item {
@@ -154,7 +146,6 @@
     height: 55px;
     line-height: 14px;
     display: block;
-    // padding: 0 0 0 8px;
     cursor: pointer;
     overflow: hidden;
     background: no-repeat left bottom;
@@ -175,7 +166,7 @@
   .air{
     background-image:url(../img/list/air.png);
   }
-  .myHouse {
+  .house {
     background-image:url(../img/list/house.png);
   }
   .current {
@@ -185,10 +176,6 @@
 
 #setting {
   padding-top: $header_height;
-  // position: absolute;
-  // top: 0;
-  // left: 100%;
-  // left: 0;
   width: 100%;
   margin-bottom: 60px;
 }
@@ -290,6 +277,9 @@
 
 #setHEMS {
   background: $base_color;
+  &:active {
+    background: lighten( $base_color , 8 );
+  }
   &:hover {
     background: lighten( $base_color , 8 );
   }
@@ -297,6 +287,9 @@
 
 #changeState {
   background: $skyBulue;
+  &:active {
+    background: lighten( $base_color , 8 );
+  }
   &:hover {
     background: lighten( $skyBulue , 10 );
   }

@@ -1,6 +1,7 @@
 require( 'TweenMax' );
 require( 'TimelineMax' );
-var Map = require( '../map/id' )();
+var Map     = require( '../map/id' )();
+var request = require( '../hems/request' );
 
 module.exports = function slide() {
 
@@ -10,7 +11,32 @@ module.exports = function slide() {
     listView    = Map.setList,
     settingVies = Map.setting,
     arrow       = Map.backArrow,
-    timeTargets = Map.setList.find( '.item' );
+    Sets = {
+      morning : {
+        map : Map.morning.find( '.item' ),
+        state : { set : 'morning' }
+      },
+      day : {
+        map : Map.day.find( '.item' ),
+        state : { set : 'day' }
+      },
+      night : {
+        map : Map.night.find( '.item' ),
+        state : { set : 'night' }
+      },
+      yoga : {
+        map : Map.yoga.find( '.item' ),
+        state : { set : 'yoga' }
+      },
+      air : {
+        map : Map.air.find( '.item' ),
+        state : { set : 'air' }
+      },
+      house : {
+        map : Map.house.find( '.item' ),
+        state : { set : 'house' }
+      }
+    };
 
   var
     SPEED = {
@@ -28,10 +54,19 @@ module.exports = function slide() {
   //init
   set();
 
-  timeTargets.on( 'click' , function(){
-    go( getWinWidth() );
-    showArrow();
+  Object.keys( Sets ).forEach( function(key){
+    Sets[key].map.on( 'click' , function(){
+      go( getWinWidth() );
+      showArrow();
+      request().getSetState( Sets[key].state );
+    });
   });
+
+
+  // timeTargets.on( 'click' , function(){
+  //   go( getWinWidth() );
+  //   showArrow();
+  // });
 
   arrow.on( 'click' , function(){
     back( getWinWidth() );

@@ -53,13 +53,13 @@
   position: relative;
   right: 0;
   padding-top: 56px;
-  margin-bottom: 20px; }
+  margin-bottom: 60px; }
   #setList .list {
     padding-top: 30px; }
     #setList .list h2 {
       padding-left: 10px;
       margin-bottom: 5px;
-      font-size: 18px;
+      font-size: 10px;
       font-weight: bold; }
       #setList .list h2 span {
         font-weight: bold;
@@ -74,6 +74,8 @@
         background: #fff;
         border-bottom: 1px solid #cacabf;
         cursor: pointer; }
+        #setList .list ul li:active {
+          background: #fafddf; }
         #setList .list ul li label {
           float: left;
           margin: 5px 10px; }
@@ -135,7 +137,7 @@
 #setList .list ul li .air {
   background-image: url(../img/list/air.png); }
 
-#setList .list ul li .myHouse {
+#setList .list ul li .house {
   background-image: url(../img/list/house.png); }
 
 #setList .list ul li .current {
@@ -221,11 +223,15 @@
 
 #setHEMS {
   background: #8ad124; }
+  #setHEMS:active {
+    background: #9dde40; }
   #setHEMS:hover {
     background: #9dde40; }
 
 #changeState {
   background: #24bbd1; }
+  #changeState:active {
+    background: #9dde40; }
   #changeState:hover {
     background: #48cce0; }
 

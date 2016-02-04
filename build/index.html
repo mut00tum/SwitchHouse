@@ -68,8 +68,8 @@
           <div id="statusList" class="list">
             <h2><span>・</span>ステータス</h2>
             <ul>
-              <li id="myHouse">
-                <label class="myHouse choose"><input type="radio" name="set"/></label>
+              <li id="house">
+                <label class="house choose"><input type="radio" name="set"/></label>
                 <div class="item">
                   <p class="set">house</p>
                   <p class="edit arrow"><img src="files/img/list/arrow.png" height="46" width="19" alt=""></p>
@@ -97,8 +97,8 @@
                   <li>
                     <label class="txt">state</label>
                     <select id="Blind_01" name="state">
-                      <option value="open">open</option>
-                      <option value="close">close</option>
+                      <option value="E041">open</option>
+                      <option value="E042">close</option>
                     </select>
                   </li>
                 </ul>
@@ -109,8 +109,8 @@
                   <li>
                     <label class="txt">state</label>
                     <select id="Blind_02" name="state">
-                      <option value="open">open</option>
-                      <option value="close">close</option>
+                      <option value="E041">open</option>
+                      <option value="E042">close</option>
                     </select>
                   </li>
                 </ul>
@@ -121,8 +121,8 @@
                   <li>
                     <label class="txt">state</label>
                     <select id="Blind_03" name="state">
-                      <option value="open">open</option>
-                      <option value="close">close</option>
+                      <option value="E041">open</option>
+                      <option value="E042">close</option>
                     </select>
                   </li>
                 </ul>
@@ -133,25 +133,25 @@
                   <li>
                     <label class="txt">switch</label>
                     <select id="Air_switch" name="switch">
-                      <option value="on">on</option>
-                      <option value="off">off</option>
+                      <option value="8030">on</option>
+                      <option value="8031">off</option>
                     </select>
                   </li>
                   <li>
                     <label class="txt">mode</label>
                     <select id="Air_mode" name="mode">
-                      <option value="hot">hot</option>
-                      <option value="cool">cool</option>
-                      <option value="dry">dry</option>
-                      <option value="wind">wind</option>
+                      <option value="B043">hot</option>
+                      <option value="B042">cool</option>
+                      <option value="B044">dry</option>
+                      <option value="B045">wind</option>
                     </select>
                   </li>
                   <li>
                     <label class="txt">temp</label>
                     <select id="Air_temp" name="temp">
-                      <option value="temp23">23</option>
-                      <option value="temp26">26</option>
-                      <option value="temp30">30</option>
+                      <option value="B317">23</option>
+                      <option value="B31A">26</option>
+                      <option value="B31E">30</option>
                     </select>
                   </li>
                 </ul>
@@ -162,8 +162,8 @@
                   <li>
                     <label class="txt">state</label>
                     <select id="Window_01" name="state">
-                      <option value="open">open</option>
-                      <option value="close">close</option>
+                      <option value="E041">open</option>
+                      <option value="E042">close</option>
                     </select>
                   </li>
                 </ul>
@@ -174,8 +174,8 @@
                   <li>
                     <label class="txt">state</label>
                     <select id="Window_02" name="state">
-                      <option value="open">open</option>
-                      <option value="close">close</option>
+                      <option value="E041">open</option>
+                      <option value="E042">close</option>
                     </select>
                   </li>
                 </ul>
@@ -186,17 +186,24 @@
                   <li>
                     <label class="txt">switch</label>
                     <select id="LightEL_switch" name="switch">
-                      <option value="on">on</option>
-                      <option value="off">off</option>
+                      <option value="8030">on</option>
+                      <option value="8031">off</option>
+                    </select>
+                  </li>
+                  <li>
+                    <label class="txt">mode</label>
+                    <select id="LightEL_mode" name="mode">
+                      <option value="B642">normal</option>
+                      <option value="B644">color</option>
                     </select>
                   </li>
                   <li>
                     <label class="txt">color</label>
                     <select id="LightEL_color" name="color">
-                      <option value="orange">orange</option>
-                      <option value="yellow">yellow</option>
-                      <option value="pink">pink</option>
-                      <option value="blue">blue</option>
+                      <option value="C0ff9f08">orange</option>
+                      <option value="C0f9fb26">yellow</option>
+                      <option value="C0ff57a2">pink</option>
+                      <option value="C03543ff">blue</option>
                     </select>
                   </li>
                 </ul>
@@ -207,8 +214,8 @@
                   <li>
                     <label class="txt">switch</label>
                     <select id="Light" name="switch">
-                      <option value="on">on</option>
-                      <option value="off">off</option>
+                      <option value="8030">on</option>
+                      <option value="8031">off</option>
                     </select>
                   </li>
                 </ul>
@@ -219,8 +226,8 @@
                   <li>
                     <label class="txt">switch</label>
                     <select id="SwitchHA" name="switch">
-                      <option value="on">on</option>
-                      <option value="off">off</option>
+                      <option value="8030">on</option>
+                      <option value="8031">off</option>
                     </select>
                   </li>
                 </ul>
@@ -234,10 +241,6 @@
           </div>
         </section>
       </div><!-- settingView -->
-
-   <!--  <div id="house">
-      <iframe id="monitor" src="http://pre.ideagenerator.jp/monitor/mutoko/house/160"></iframe>
-    </div> -->
 
     <script src="files/js/app.js"></script>
 	</body>

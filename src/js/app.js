@@ -6,6 +6,7 @@ var slide   = require( './ui/slide' );
 
 // ▼HEMS
 setHEMS();
+request();
 
 // ▼UI
 radio();
