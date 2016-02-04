@@ -7,7 +7,7 @@
   width: 100%;
   background: #8ad124;
   text-align: center;
-  z-index: 10; }
+  z-index: 100; }
   #header h1 {
     margin: 0 auto;
     padding: 12px 0 12px 15px; }
@@ -16,15 +16,36 @@
   #header #backArrow {
     display: none;
     position: absolute;
-    left: 25px;
-    top: 12px;
-    width: 13px;
-    height: 17px;
+    left: 10px;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
     cursor: pointer; }
+    #header #backArrow img {
+      position: relative;
+      top: 5px;
+      width: 13px;
+      height: 17px; }
 
-#view {
-  position: relative;
-  right: 0; }
+#setView {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  overflow-x: visible;
+  overflow-y: scroll;
+  background: #f5f6e1;
+  -webkit-overflow-scrolling: touch; }
+
+#settingView {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  overflow-x: visible;
+  overflow-y: scroll;
+  background: #f5f6e1;
+  -webkit-overflow-scrolling: touch;
+  z-index: -1; }
 
 #setList {
   position: relative;
@@ -120,10 +141,8 @@
 
 #setting {
   padding-top: 56px;
-  position: absolute;
-  top: 0;
-  left: 100%;
-  width: 100%; }
+  width: 100%;
+  margin-bottom: 60px; }
 
 #setHeader {
   position: relative;

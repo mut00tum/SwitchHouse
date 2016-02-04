@@ -5,7 +5,8 @@ var Map = require( '../map/id' )();
 module.exports = function slide() {
 
   var
-    view        = Map.view,
+    setView     = Map.setView,
+    settingView = Map.settingView,
     listView    = Map.setList,
     settingVies = Map.setting,
     arrow       = Map.backArrow,
@@ -24,13 +25,16 @@ module.exports = function slide() {
       ARROW : .15
     };
 
+  //init
+  set();
+
   timeTargets.on( 'click' , function(){
     go( getWinWidth() );
     showArrow();
   });
 
   arrow.on( 'click' , function(){
-    back( );
+    back( getWinWidth() );
     hideArrow();
   });
 
@@ -39,16 +43,33 @@ module.exports = function slide() {
     return $( window ).width();
   }
 
+  function set() {
+    TweenMax.set( setView , {
+      x : 0
+    });
+    TweenMax.set( settingView , {
+      x : - getWinWidth()
+    });
+  }
+
   function go( w ) {
-    TweenMax.to( view , SPEED.GO , {
+    TweenMax.to( setView , SPEED.GO , {
       x : - w,
+      ease : EASE.GO
+    });
+    TweenMax.to( settingView , SPEED.GO , {
+      x : 0,
       ease : EASE.GO
     });
   }
 
-  function back( ) {
-    TweenMax.to( view , SPEED.BACK , {
+  function back( w ) {
+    TweenMax.to( setView , SPEED.BACK , {
       x : 0,
+      ease : EASE.BACK
+    });
+    TweenMax.to( settingView , SPEED.BACK , {
+      x : - w,
       ease : EASE.BACK
     });
   }

@@ -8,9 +8,10 @@ module.exports = function Map() {
 
   return {
     Url     : Url.heroku,
-    view        : $( '#view' ),
+    setView     : $( '#setView' ),
     backArrow   : $( '#backArrow' ),
     setList     : $( '#setList' ),
+    settingView : $( '#settingView' ),
     timeList    : $( '#timeList' ),
     styleList   : $( '#styleList' ),
     statusList  : $( '#statusList' ),
