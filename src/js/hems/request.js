@@ -85,7 +85,7 @@ module.exports = function request() {
       Map.Window_02.val( d.equipment_24 );
       Map.LightEL_switch.val( d.equipment_3.substr( 0 , 4 ) );
       Map.LightEL_mode.val( d.equipment_3.substr( 4 , 4 ) );
-      Map.LightEL_color.val( d.equipment_3.substr( 8 , 6 ) );
+      Map.LightEL_color.val( d.equipment_3.substr( 8 , 8 ) );
       Map.Light.val( d.equipment_15 );
       Map.Blind_01.val( d.equipment_17 );
       Map.SwitchHA.val( d.equipment_25 );

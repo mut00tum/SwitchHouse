@@ -7,7 +7,7 @@ module.exports = function Map() {
     };
 
   return {
-    Url            : Url.heroku,
+    Url            : Url.local,
     setView        : $( '#setView' ),
     backArrow      : $( '#backArrow' ),
     setList        : $( '#setList' ),
