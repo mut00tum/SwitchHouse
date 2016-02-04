@@ -11,6 +11,7 @@ module.exports = function Map() {
     setView        : $( '#setView' ),
     backArrow      : $( '#backArrow' ),
     setList        : $( '#setList' ),
+    setTitle       : $( '#setTitle' ),
     settingView    : $( '#settingView' ),
     timeList       : $( '#timeList' ),
     styleList      : $( '#styleList' ),

@@ -56,6 +56,7 @@ module.exports = function slide() {
 
   Object.keys( Sets ).forEach( function(key){
     Sets[key].map.on( 'click' , function(){
+      Map.setTitle.find( 'span' ).text( Sets[key].state.set )
       go( getWinWidth() );
       showArrow();
       request().getSetState( Sets[key].state );
