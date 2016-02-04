@@ -3,21 +3,21 @@ var Obj = require( '../map/HEMSobj' )();
 
 module.exports = function setHEMS() {
 
-  var
-    Data = {
-      State : {
-        Blind_01  : { obj: Obj.Blind.obj_01 , state: Map.Blind_01.val() },
-        Blind_02  : { obj: Obj.Blind.obj_02 , state: Map.Blind_02.val() },
-        Blind_03  : { obj: Obj.Blind.obj_03 , state: Map.Blind_03.val() },
-        Air       : { obj: Obj.Air.obj_01 , state: Map.Air_switch.val() + Map.Air_mode.val() + Map.Air_temp.val() },
-        Window_01 : { obj: Obj.Window.obj_01 , state: Map.Window_01.val() },
-        Window_02 : { obj: Obj.Window.obj_02 , state: Map.Window_02.val() },
-        LightEL   : { obj: Obj.LightEL.obj_01 , state: Map.LightEL_switch.val() + Map.LightEL_mode.val() + Map.LightEL_color.val() },
-        Light     : { obj: Obj.Light.obj_01 , state: Map.Light.val() },
-        SwitchHA  : { obj: Obj.SwitchHA.obj_01 , state: Map.SwitchHA.val() }
-      },
-      Set : Map.setTitle.find( 'span' ).text()
-    };
+  // var
+  //   Data = {
+  //     State : {
+  //       Blind_01  : { obj: Obj.Blind.obj_01 , state: Map.Blind_01.val() },
+  //       Blind_02  : { obj: Obj.Blind.obj_02 , state: Map.Blind_02.val() },
+  //       Blind_03  : { obj: Obj.Blind.obj_03 , state: Map.Blind_03.val() },
+  //       Air       : { obj: Obj.Air.obj_01 , state: Map.Air_switch.val() + Map.Air_mode.val() + Map.Air_temp.val() },
+  //       Window_01 : { obj: Obj.Window.obj_01 , state: Map.Window_01.val() },
+  //       Window_02 : { obj: Obj.Window.obj_02 , state: Map.Window_02.val() },
+  //       LightEL   : { obj: Obj.LightEL.obj_01 , state: Map.LightEL_switch.val() + Map.LightEL_mode.val() + Map.LightEL_color.val() },
+  //       Light     : { obj: Obj.Light.obj_01 , state: Map.Light.val() },
+  //       SwitchHA  : { obj: Obj.SwitchHA.obj_01 , state: Map.SwitchHA.val() }
+  //     },
+  //     Set : Map.setTitle.find( 'span' ).text()
+  //   };
     // day = {
     //   State : {
     //     Blind_01  : { obj: Obj.Blind.obj_01 , state: Obj.Blind.close },
@@ -94,6 +94,21 @@ module.exports = function setHEMS() {
   // setHemsProp( morning );
 
   Map.setHEMS.on( 'click' , function() {
+    var Data = {
+      State : {
+        Blind_01  : { obj: Obj.Blind.obj_01 , state: Map.Blind_01.val() },
+        Blind_02  : { obj: Obj.Blind.obj_02 , state: Map.Blind_02.val() },
+        Blind_03  : { obj: Obj.Blind.obj_03 , state: Map.Blind_03.val() },
+        Air       : { obj: Obj.Air.obj_01 , state: Map.Air_switch.val() + Map.Air_mode.val() + Map.Air_temp.val() },
+        Window_01 : { obj: Obj.Window.obj_01 , state: Map.Window_01.val() },
+        Window_02 : { obj: Obj.Window.obj_02 , state: Map.Window_02.val() },
+        LightEL   : { obj: Obj.LightEL.obj_01 , state: Map.LightEL_switch.val() + Map.LightEL_mode.val() + Map.LightEL_color.val() },
+        Light     : { obj: Obj.Light.obj_01 , state: Map.Light.val() },
+        SwitchHA  : { obj: Obj.SwitchHA.obj_01 , state: Map.SwitchHA.val() }
+      },
+      Set : Map.setTitle.find( 'span' ).text()
+    };
+    console.log( Data )
     setHemsProp( Data );
   });
 

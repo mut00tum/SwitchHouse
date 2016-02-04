@@ -89,7 +89,7 @@ app.post("/setHEMS", function (req, res){
     res.status(200).end();
 
   } catch(e) {
-    console.log( 'SET: /off: error!' )
+    console.log( 'SET: /setHEMS: error!' )
   }
 });
 
@@ -102,7 +102,7 @@ app.post("/getHouseState", function (req, res){
     getAppRequestToJson( Json.house );
     res.status(200).end();
   } catch(e) {
-    console.log( 'SET: /off: error!' )
+    console.log( 'SET: /getHouseState: error!' )
   }
 });
 
@@ -116,7 +116,7 @@ app.post( "/getSetState" , function (req, res){
     res.json( data );
     res.status(200).end();
   } catch(e) {
-    console.log( 'GET: /switch: error!' )
+    console.log( 'GET: /getSetState: error!' )
   }
 });
 
