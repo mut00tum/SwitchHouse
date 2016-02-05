@@ -61,8 +61,7 @@ module.exports = function slide() {
       showVal().selectTag();
       Map.setTitle.find( 'span' ).text( Sets[key].state.set )
       go( getWinWidth() );
-      showArrow();
-      // request().setHouseJson();
+      request().setHouseJson();
       request().getSetState( Sets[key].state );
       // setTimeout( function(){
       //   request().setHouseJson();
@@ -72,16 +71,19 @@ module.exports = function slide() {
   });
 
   houseSet.map.on( 'click' , function(){
+    request().setHouseJson();
     showVal().houseVal();
     Map.setTitle.find( 'span' ).text( houseSet.state.set )
     go( getWinWidth() );
-    showArrow();
-    request().getHouseState();
+    setTimeout( function(){
+      request().getHouseState();
+    } , 500 );
+
   });
 
   arrow.on( 'click' , function(){
+    request().setHouseJson();
     back( getWinWidth() );
-    hideArrow();
   });
 
   Map.setHEMS.on( 'click' , function() {
@@ -166,6 +168,7 @@ module.exports = function slide() {
   }
 
   function go( w ) {
+    showArrow()
     TweenMax.to( setView , SPEED.GO , {
       x : - w,
       ease : EASE.GO
@@ -177,9 +180,7 @@ module.exports = function slide() {
   }
 
   function back( w ) {
-
-    request().setHouseJson();
-
+    hideArrow()
     TweenMax.to( setView , SPEED.BACK , {
       x : 0,
       ease : EASE.BACK

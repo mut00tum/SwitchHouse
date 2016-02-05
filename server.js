@@ -86,7 +86,7 @@ app.post("/setHEMS", function (req, res){
     Object.keys(data.State).forEach(function(key){
       option.form[data.State[key].obj] = data.State[key].state;
     });
-
+    // console.log( option )
     res.status(200).end();
 
   } catch(e) {
