@@ -3,24 +3,37 @@ var Map = require( '../map/id' )();
 module.exports = function radio() {
 
   var
-    morning   = Map.morning.find( 'input[type="radio"]' ),
-    labelList = Map.setList.find( '.choose' ),
-    radioList = Map.setList.find( 'input[type="radio"]' );
+    morning   = Map.morning.find( '.choose' ),
+    labelList = Map.setList.find( '.choose' );
 
   //init
-  changeProp( morning );
+  // changeProp( morning );
+  morning.addClass('current');
 
-  Map.setList.find( 'label' ).on( 'click' , function(){
-    var self   = $( this );
-    var target = self.find( 'input[type="radio"]' )
-    changeProp( target );
+  Map.setHEMS.on( 'click' , function(){
+    setTarget();
+  });
+  Map.changeState.on( 'click' , function(){
+    setTarget();
   });
 
-  function changeProp( t ) {
-    // radioList.attr('checked', false);
-    labelList.removeClass('current');
-    // t.attr('checked', true);
-    t.parent().addClass('current');
+  function setTarget() {
+    var set = Map.setTitle.find( 'span' ).text();
+    var id = $( '#' + set );
+    if( set == 'house' ) {
+      return false;
+    } else {
+      var target = id.find( '.choose' );
+      changeProp( target );
+    }
+
+    function changeProp( target ) {
+      labelList.removeClass('current');
+      target.addClass('current');
+    }
+
   }
+
+
 
 }

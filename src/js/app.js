@@ -1,13 +1,13 @@
 var setHEMS = require( './hems/setHEMS' );
 var request = require( './hems/request' );
 var radio   = require( './ui/radio' );
-var slide   = require( './ui/slide' );
+var eventManager   = require( './ui/eventManager' );
 // var setROBOT = require( './hems/robot' );
 
 // ▼HEMS
-setHEMS();
+// setHEMS();
 request();
 
 // ▼UI
 radio();
-slide();
+eventManager();

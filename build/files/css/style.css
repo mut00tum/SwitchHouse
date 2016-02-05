@@ -144,6 +144,7 @@
   background-position: right bottom; }
 
 #setting {
+  position: relative;
   padding-top: 56px;
   width: 100%;
   margin-bottom: 60px; }
@@ -157,7 +158,7 @@
     position: relative;
     left: 50%;
     float: left;
-    height: 40px; }
+    height: 45px; }
     #setHeader h1 .wrapper img, #setHeader h1 .wrapper span {
       position: relative;
       left: -50%;
@@ -204,6 +205,24 @@
       width: 80px;
       text-align: center;
       font-size: 14px; }
+
+#setBody ul.house {
+  float: right; }
+  #setBody ul.house li {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-align: right; }
+    #setBody ul.house li:last-child {
+      margin-right: 0;
+      margin-bottom: 0; }
+    #setBody ul.house li p {
+      display: inline-block; }
+    #setBody ul.house li .txt {
+      font-size: 12px; }
+    #setBody ul.house li .val {
+      text-align: right;
+      font-size: 13px; }
 
 #setting .btnArea {
   text-align: center;

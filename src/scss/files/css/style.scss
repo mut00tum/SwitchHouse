@@ -175,6 +175,7 @@
 }
 
 #setting {
+  position: relative;
   padding-top: $header_height;
   width: 100%;
   margin-bottom: 60px;
@@ -189,7 +190,7 @@
     position: relative;
     left: 50%;
     float: left;
-    height: 40px;
+    height: 45px;
     .wrapper {
       img, span {
         position: relative;
@@ -239,6 +240,7 @@
 }
 
   #setBody ul.status {
+    // display: none;
     float: right;
     li {
       margin-bottom: 10px;
@@ -252,6 +254,32 @@
         width: 80px;
         text-align: center;
         font-size: 14px;
+      }
+    }
+  }
+
+  #setBody ul.house {
+    // display: none;
+    float: right;
+    li {
+      float: left;
+      // width: 140px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      text-align: right;
+      &:last-child {
+        margin-right: 0;
+        margin-bottom: 0;
+      }
+      p {
+        display: inline-block;
+      }
+      .txt {
+        font-size: 12px;
+      }
+      .val {
+        text-align: right;
+        font-size: 13px;
       }
     }
   }

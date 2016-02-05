@@ -20,7 +20,6 @@ var
     form: {
       id: 'mutoko',
       pw: 'b2vs8nit',
-      // mode : 'set',
       house_no : '160'
     }
   },
@@ -34,11 +33,13 @@ console.log( "start listening at 8000" );
 // app.listen(8000);
 app.listen(process.env.PORT || 8000);
 
-function getAppRequestToJson( path ) {
+function updateHouseJson( path ) {
   option.form['mode'] = 'get'
+  // console.log( option )
   request.post( option , function( error, response, body ){
     if( !error && response.statusCode == 200 ) {
       var json = JSON.parse( body );
+      // console.log( json )
       fs.writeFileSync( path , JSON.stringify( json ) );
     } else {
       console.log( 'error: ' + response.statusCode );
@@ -50,7 +51,6 @@ function setAppRequest() {
   option.form['mode'] = 'set'
   request.post( option , function( error, response, body ){
     if( !error && response.statusCode == 200 ) {
-      // var data = JSON.parse( body );
       console.log( 'setAppRequest succeed!' )
     } else {
       console.log( 'error: ' + response.statusCode );
@@ -86,6 +86,7 @@ app.post("/setHEMS", function (req, res){
     Object.keys(data.State).forEach(function(key){
       option.form[data.State[key].obj] = data.State[key].state;
     });
+
     res.status(200).end();
 
   } catch(e) {
@@ -93,16 +94,16 @@ app.post("/setHEMS", function (req, res){
   }
 });
 
-app.post("/getHouseState", function (req, res){
+app.post("/setHouseJson", function (req, res){
   try {
     var data = req.body;
     Object.keys(data.State).forEach(function(key){
       option.form[data.State[key].obj] = data.State[key].state;
     });
-    getAppRequestToJson( Json.house );
+    updateHouseJson( Json.house );
     res.status(200).end();
   } catch(e) {
-    console.log( 'SET: /getHouseState: error!' )
+    console.log( 'SET: /setHouseJson: error!' )
   }
 });
 
@@ -120,14 +121,19 @@ app.post( "/getSetState" , function (req, res){
   }
 });
 
-// app.post("/off", function (req, res){
-//   try {
-//     fs.writeFileSync( Json.switch , JSON.stringify(req.body));
-//     res.status(200).end();
-//   } catch(e) {
-//     console.log( 'POST: /off: error!' )
-//   }
-// });
+app.get( "/getHouseState" , function (req, res){
+  try {
+    res.set('Content-Type', 'application/json');
+    // var data = req.body;
+    // var path = switcher( data.set )
+
+    var data = JSON.parse( fs.readFileSync( Json.house , 'utf8' ) );
+    res.json( data );
+    res.status(200).end();
+  } catch(e) {
+    console.log( 'GET: /getHouseState: error!' )
+  }
+});
 
 app.post("/on", function (req, res){
   try {
