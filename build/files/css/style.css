@@ -76,6 +76,8 @@
         cursor: pointer; }
         #setList .list ul li:active {
           background: #fafddf; }
+        #setList .list ul li:hover {
+          background: #fafddf; }
         #setList .list ul li label {
           float: left;
           margin: 5px 10px; }
@@ -97,8 +99,8 @@
             margin: auto;
             padding: 0 10px;
             cursor: pointer; }
-          #setList .list ul li .item .btn {
-            right: 10px;
+          #setList .list ul li .item .info {
+            right: 15px;
             width: 23px;
             height: 23px; }
           #setList .list ul li .item .arrow {
