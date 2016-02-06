@@ -24,6 +24,7 @@ module.exports = function Map() {
     house            : $( '#house' ),
     setting          : $( '#setting' ),
     setHeader        : $( '#setHeader' ),
+    reload           : $( '#reload' ),
     setBody          : $( '#setBody' ),
     setHEMS          : $( '#setHEMS' ),
     changeState      : $( '#changeState' ),

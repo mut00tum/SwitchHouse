@@ -1,5 +1,6 @@
 require( 'TweenMax' );
 require( 'TimelineMax' );
+require( 'scrollTo' );
 var Map     = require( '../map/id' )();
 var Obj     = require( '../map/HEMSobj' )();
 var request = require( '../hems/request' );
@@ -12,6 +13,9 @@ module.exports = function slide() {
     setList     = Map.setList,
     setting     = Map.setting,
     arrow       = Map.backArrow,
+    reload      = Map.reload,
+    setHEMS     = Map.setHEMS,
+    changeState = Map.changeState,
     Sets = {
       morning : {
         map : Map.morning.find( '.item' ),
@@ -58,27 +62,26 @@ module.exports = function slide() {
 
   Object.keys( Sets ).forEach( function(key){
     Sets[key].map.on( 'click' , function(){
+      setTitle( Sets[key].state.set );
       showVal().selectTag();
-      Map.setTitle.find( 'span' ).text( Sets[key].state.set )
+      hideReload();
+      showBtn();
       go( getWinWidth() );
       request().setHouseJson();
-      request().getSetState( Sets[key].state );
-      // setTimeout( function(){
-      //   request().setHouseJson();
-      // } , 500 );
-
+      request().loadSetState( Sets[key].state );
     });
   });
 
   houseSet.map.on( 'click' , function(){
-    request().setHouseJson();
+    setTitle( houseSet.state.set );
     showVal().houseVal();
-    Map.setTitle.find( 'span' ).text( houseSet.state.set )
+    showReload();
+    hideBtn();
     go( getWinWidth() );
+    request().setHouseJson();
     setTimeout( function(){
-      request().getHouseState();
-    } , 500 );
-
+      request().loadHouseState();
+    } , 100 );
   });
 
   arrow.on( 'click' , function(){
@@ -86,12 +89,12 @@ module.exports = function slide() {
     back( getWinWidth() );
   });
 
-  Map.setHEMS.on( 'click' , function() {
+  setHEMS.on( 'click' , function() {
     request().setReadyHems( getFormData() );
     back( getWinWidth() );
   });
 
-  Map.changeState.on( 'click' , function(){
+  changeState.on( 'click' , function(){
     var result = confirm("この内容でセットしますか？");
     if(result){
       request().setReadyHems( getFormData() );
@@ -102,9 +105,11 @@ module.exports = function slide() {
     } else {
       return false;
     }
-
-
   })
+
+  reload.on( 'click' , function(){
+    request().loadHouseState();
+  });
 
   function getWinWidth() {
     return $( window ).width();
@@ -127,44 +132,20 @@ module.exports = function slide() {
     };
   }
 
+  function setTitle( set ) {
+    var path = "files/img/set/" + set + '.png';
+    Map.setTitle.find( 'img' ).attr( 'src' , path );
+    Map.setTitle.find( 'span' ).text( set );
+  }
+
   function set() {
     TweenMax.set( setView , {
-      x : 0,
-
+      x : 0
     });
     TweenMax.set( settingView , {
       x : - getWinWidth()
     });
-
-  }
-
-  function showVal(){
-    var
-      status = Map.setBody.find( '.status' ),
-      house  = Map.setBody.find( '.house' );
-
-    function selectTag() {
-      TweenMax.set( status , {
-        display : 'block'
-      });
-      TweenMax.set( house , {
-        display : 'none'
-      });
-    }
-
-    function houseVal() {
-      TweenMax.set( status , {
-        display : 'none'
-      });
-      TweenMax.set( house , {
-        display : 'block'
-      });
-    }
-
-    return {
-      selectTag : selectTag,
-      houseVal : houseVal
-    }
+    hideReload();
   }
 
   function go( w ) {
@@ -177,6 +158,7 @@ module.exports = function slide() {
       x : 0,
       ease : EASE.GO
     });
+    setTop( settingView );
   }
 
   function back( w ) {
@@ -189,6 +171,7 @@ module.exports = function slide() {
       x : - w,
       ease : EASE.BACK
     });
+    setTop( setView );
   }
 
   function showArrow() {
@@ -202,6 +185,62 @@ module.exports = function slide() {
     TweenMax.to( arrow , 0 , {
       display : 'none',
       delay   : DELAY.ARROW
+    });
+  }
+
+  function showReload() {
+    TweenMax.set( reload , {
+      display : 'block'
+    });
+  }
+
+  function hideReload() {
+    TweenMax.set( reload , {
+      display : 'none'
+    });
+  }
+
+  function showBtn() {
+    TweenMax.set( [setHEMS, changeState] , {
+      display : 'block'
+    });
+  }
+
+  function hideBtn() {
+    TweenMax.set( [setHEMS, changeState] , {
+      display : 'none'
+    });
+  }
+
+  function showVal(){
+    var
+      status = Map.setBody.find( '.status' ),
+      house  = Map.setBody.find( '.house' );
+    function selectTag() {
+      TweenMax.set( status , {
+        display : 'block'
+      });
+      TweenMax.set( house , {
+        display : 'none'
+      });
+    }
+    function houseVal() {
+      TweenMax.set( status , {
+        display : 'none'
+      });
+      TweenMax.set( house , {
+        display : 'block'
+      });
+    }
+    return {
+      selectTag : selectTag,
+      houseVal : houseVal
+    }
+  }
+
+  function setTop( parent ) {
+    TweenMax.set( parent , {
+      scrollTo : { y: - parent.position().top }
     });
   }
 

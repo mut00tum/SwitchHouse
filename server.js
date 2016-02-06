@@ -107,7 +107,7 @@ app.post("/setHouseJson", function (req, res){
   }
 });
 
-app.post( "/getSetState" , function (req, res){
+app.post( "/loadSetState" , function (req, res){
   try {
     res.set('Content-Type', 'application/json');
     var data = req.body;
@@ -117,21 +117,18 @@ app.post( "/getSetState" , function (req, res){
     res.json( data );
     res.status(200).end();
   } catch(e) {
-    console.log( 'GET: /getSetState: error!' )
+    console.log( 'GET: /loadSetState: error!' )
   }
 });
 
-app.get( "/getHouseState" , function (req, res){
+app.get( "/loadHouseState" , function (req, res){
   try {
     res.set('Content-Type', 'application/json');
-    // var data = req.body;
-    // var path = switcher( data.set )
-
     var data = JSON.parse( fs.readFileSync( Json.house , 'utf8' ) );
     res.json( data );
     res.status(200).end();
   } catch(e) {
-    console.log( 'GET: /getHouseState: error!' )
+    console.log( 'GET: /loadHouseState: error!' )
   }
 });
 

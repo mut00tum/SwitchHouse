@@ -67,7 +67,7 @@
     h2 {
       padding-left: 10px;
       margin-bottom: 5px;
-      font-size: 10px;
+      font-size: 14px;
       font-weight: bold;
       span {
         font-weight: bold;
@@ -183,14 +183,14 @@
 
 #setHeader {
   position: relative;
-  overflow: hidden;
-  margin-bottom: 10px;
+  // overflow: hidden;
+  // margin-bottom: 10px;
   text-align: center;
   h1 {
     position: relative;
     left: 50%;
     float: left;
-    height: 45px;
+    // height: 45px;
     .wrapper {
       img, span {
         position: relative;
@@ -198,6 +198,7 @@
         float: left;
       }
       img {
+        padding-top: 5px;
         width: 55px;
         height: 55px;
         margin-right: 5px;
@@ -208,6 +209,20 @@
         font-weight: bold;
       }
     }
+  }
+  #reload {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    padding-top: 10px;
+    border-radius: 20px;
+    color: #fff;
+    background: $base_color;
+    box-shadow: 2px 2px 0 rgba( #000 , .1 );
+    font-size: 13px;
   }
 }
 

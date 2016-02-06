@@ -36,20 +36,20 @@ module.exports = function request() {
     });
   }
 
-  function getSetState( set ) {
+  function loadSetState( set ) {
     var data = JSON.stringify( set );
 
     $.ajax({
       type: 'POST',
-      url: Map.Url + '/getSetState',
+      url: Map.Url + '/loadSetState',
       data: data,
       contentType: 'application/json',
       success: function( data ){
-        console.log( 'getSetState succeed!' );
+        console.log( 'loadSetState succeed!' );
         setStatus( data );
       },
       error: function() {
-        console.log("getSetState 通信エラーです");
+        console.log("loadSetState 通信エラーです");
       }
     });
 
@@ -70,19 +70,19 @@ module.exports = function request() {
     }
   }
 
-  function getHouseState( ) {
+  function loadHouseState( ) {
 
     $.ajax({
       type: 'GET',
-      url: Map.Url + '/getHouseState',
+      url: Map.Url + '/loadHouseState',
       contentType: 'application/json',
       success: function( data ){
         // console.log( data )
-        console.log( 'getHouseState succeed!' );
+        console.log( 'loadHouseState succeed!' );
         setStatus( data );
       },
       error: function() {
-        console.log("getHouseState 通信エラーです");
+        console.log("loadHouseState 通信エラーです");
       }
     });
 
@@ -155,10 +155,10 @@ module.exports = function request() {
   }
 
   return {
-    setHouseJson  : setHouseJson,
-    getSetState   : getSetState,
-    getHouseState : getHouseState,
-    setReadyHems  : setReadyHems,
-    changeState   : changeState
+    setHouseJson   : setHouseJson,
+    loadSetState   : loadSetState,
+    loadHouseState : loadHouseState,
+    setReadyHems   : setReadyHems,
+    changeState    : changeState
   }
 }

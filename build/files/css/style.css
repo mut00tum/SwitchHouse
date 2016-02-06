@@ -59,7 +59,7 @@
     #setList .list h2 {
       padding-left: 10px;
       margin-bottom: 5px;
-      font-size: 10px;
+      font-size: 14px;
       font-weight: bold; }
       #setList .list h2 span {
         font-weight: bold;
@@ -151,19 +151,17 @@
 
 #setHeader {
   position: relative;
-  overflow: hidden;
-  margin-bottom: 10px;
   text-align: center; }
   #setHeader h1 {
     position: relative;
     left: 50%;
-    float: left;
-    height: 45px; }
+    float: left; }
     #setHeader h1 .wrapper img, #setHeader h1 .wrapper span {
       position: relative;
       left: -50%;
       float: left; }
     #setHeader h1 .wrapper img {
+      padding-top: 5px;
       width: 55px;
       height: 55px;
       margin-right: 5px; }
@@ -171,6 +169,19 @@
       padding-top: 15px;
       font-size: 20px;
       font-weight: bold; }
+  #setHeader #reload {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    padding-top: 10px;
+    border-radius: 20px;
+    color: #fff;
+    background: #8ad124;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    font-size: 13px; }
 
 #setBody {
   padding: 10px;
